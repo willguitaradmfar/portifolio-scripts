@@ -3,6 +3,8 @@ return async ({
     input
 }) => {
 
+    await utils.invoke('consolidate_wallet')
+
     const nowWeek = utils.dayjs().format('d')
     const nowHour = parseInt(utils.dayjs().add(-3, 'hour').format('HH'))
 

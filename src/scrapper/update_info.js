@@ -88,6 +88,8 @@ return async ({
 
     await browser.close();
 
+    await utils.invoke('consolidate_wallet')
+
     return {
         results
     }

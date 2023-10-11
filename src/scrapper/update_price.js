@@ -11,7 +11,7 @@ return async ({
         }
     }).sort({
         updated_price_at: 1
-    }).limit(10)
+    }).limit(50)
 
     utils.log(`Scraping ${allQuotes.length} ...`)
 
@@ -111,8 +111,9 @@ return async ({
         }
     }))
 
-
     await browser.close();
+
+    await utils.invoke('consolidate_wallet')
 
     return {
         results

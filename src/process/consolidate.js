@@ -30,14 +30,6 @@ return async ({ utils, input }) => {
     const results = []
 
     for (const trans of transaction_group) {
-        await Transaction.deleteMany({
-            user: trans._id.user,
-            stock: trans._id.stock,
-            operation: {
-                $in: ['SPLIT', 'DIVIDEND']
-            }
-        })
-
         for (const event of trans.stock_action_events) {
             let transaction = await Transaction.findOne({
                 user: trans._id.user,
@@ -60,7 +52,6 @@ return async ({ utils, input }) => {
 
                 await transaction.save()
             } else {
-
                 await Transaction.updateOne({
                     _id: transaction._id
                 }, {
@@ -74,12 +65,6 @@ return async ({ utils, input }) => {
     }
 
     const aggregate = []
-
-    /*aggregate.push({
-        $match: {
-          "stock.quote_name": "BPAC11"
-      }
-    })*/
 
     aggregate.push({
         $sort: {
@@ -169,6 +154,8 @@ return async ({ utils, input }) => {
             })
         }
     }
+
+    await utils.invoke('consolidate_wallet')
 
     return {
         result

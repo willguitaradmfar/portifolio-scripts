@@ -12,7 +12,6 @@ const getYear = async ({
     const token = utils.path(input, 'input.token')
 
     const thisYear = new Date().getFullYear()
-    const thisMonth = new Date().getMonth() + 1
 
     let page = 1
     let totalPaginas
@@ -102,11 +101,14 @@ return async ({
     input
 }) => {
     const userId = utils.path(input, 'input.user')
-
+    
     const thisYear = new Date().getFullYear()
     const results = []
 
+    const generalProgress = utils.progress('Importação ...', 4)
+
     utils.log('Importing transactions from Portal do Investidor')
+    generalProgress()
 
     for (let i = 2019; i <= thisYear; i++) {
         const list = await getYear({
@@ -128,6 +130,8 @@ return async ({
         }
     }
 
+    generalProgress()
+
     const Transaction = utils.coll('transaction')
     const StockAction = utils.coll('stock_action')
 
@@ -135,7 +139,7 @@ return async ({
 
     utils.log(`Importing transactions from Portal do Investidor - ${results.length}`)
 
-    let prio = 0
+    const transactionProgress = utils.progress(`Criando ${results.length} transações`, results.length)
 
     for (const transaction of results) {
         const stocks = await StockAction.find({
@@ -145,10 +149,6 @@ return async ({
                 previous_quote_name: transaction.ticker
             }]
         })
-        if (transaction.ticker === 'PRIO3') {
-            prio += 1
-            utils.log('PRIO3', transaction.date, transaction.quantity, prio, transaction.operation, transaction.price)
-        }
 
         if (!stocks.length) {
             stock = new StockAction({
@@ -195,12 +195,21 @@ return async ({
                 })
             }
         }
+
+        transactionProgress()
     }
+
+    generalProgress()
 
     utils.log('Imported transactions from Portal do Investidor')
     await utils.notify('imported_transaction_portal_investidor', {
         userId
     })
+
+    const consolidateProgress = utils.progress('Consolidando ...', 1)    
+    await utils.invoke('consolidate')
+    consolidateProgress()
+    generalProgress()
 
     return {
         results

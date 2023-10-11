@@ -15,7 +15,9 @@ return async ({
             "Email": email,
             "Senha": senha
         })
-    }).then(res => res.headers.raw()["set-cookie"])
+    }).then(res => res.text())
+
+    return cookies
 
     let line = cookies.find(line => line.indexOf('Login') >= 0)
 
