@@ -1,0 +1,25 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - hml
+jobs:
+  build-back:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout recursive
+        uses: actions/checkout@v2
+      - name: Get changed files
+        id: changed-files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: space-delimited
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish changed files
+        env:
+          CORE_SCRIPT_TOKEN: ${{ secrets.HML_CORE_SCRIPT_TOKEN }}
+          CORE_SCRIPT_HOST: ${{ secrets.HML_CORE_SCRIPT_HOST }}
+        run: |
+          npm ci
+          echo "${{ steps.changed-files.outputs.all }}" | xargs -n 1 | xargs -n 1 echo npm run publish | sh

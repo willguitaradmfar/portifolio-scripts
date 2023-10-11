@@ -1,0 +1,25 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "## criado a partir do ORKI",
+  "main": "ACTION_IMPORT_NEGOCIACAO_PORTAL_DO_INVESTIDOR.js",
+  "scripts": {
+    "publish": "npx orki-core-script publish -f",
+    "run": "npx orki-core-script execute -f"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seal-devmania/scripts.git"
+  },
+  "author": "William Lima Pereira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seal-devmania/scripts/issues"
+  },
+  "homepage": "https://github.com/seal-devmania/scripts#readme",
+  "dependencies": {
+    "eventsource": "^2.0.2",
+    "node-fetch": "^3.3.1",
+    "orki-core-script": "^0.0.30"
+  }
+}
