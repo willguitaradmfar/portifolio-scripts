@@ -1,9 +1,9 @@
-name: Wallet User
+name: Carteira do Usuário
 api: wallet_target_user
 identifier: wallet_target_user
 fields:
   - name: user
-    label: user
+    label: Usuário
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -24,7 +24,7 @@ fields:
     order: 0
     defaultField: false
   - name: wallet_target
-    label: Target
+    label: Posição
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -41,12 +41,12 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: true
+      listMode: false
       cloneMode: true
     order: 0
     defaultField: false
   - name: updated_at
-    label: updated_at
+    label: Atualizado em
     optionsType:
       Date:
         dateFormat: DD/MM/YYYY
@@ -61,12 +61,12 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: true
+      listMode: false
       cloneMode: true
     order: 0
     defaultField: false
   - name: stock
-    label: stock
+    label: Ativo
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -87,7 +87,7 @@ fields:
     order: 0
     defaultField: false
   - name: quantity
-    label: quantity
+    label: Quantidade
     optionsType:
       Number:
         formatType: number
@@ -296,7 +296,7 @@ fields:
     order: 0
     defaultField: false
   - name: variation
-    label: variation
+    label: Var. %
     optionsType:
       Number:
         formatType: number
@@ -353,7 +353,7 @@ fields:
     order: 0
     defaultField: false
   - name: wallet
-    label: wallet
+    label: Carteira
     optionsType:
       DynamicSelect:
         diplayFields:

@@ -1,29 +1,9 @@
-name: Wallet User History
+name: Histórico de Carteira
 api: wallet_target_user_history
 identifier: wallet_target_user_history
 fields:
-  - name: created_at
-    label: Criado em
-    optionsType:
-      Date:
-        dateFormat: DD/MM/YYYY
-        timeFormat: HH:mm
-        isTimeAgo: false
-    layout:
-      xs: "12"
-      sm: "12"
-      md: "12"
-      lg: "12"
-      xl: "12"
-    visible:
-      editMode: true
-      addMode: true
-      listMode: true
-      cloneMode: true
-    order: -1
-    defaultField: false
   - name: user
-    label: user
+    label: Usuário
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -45,7 +25,7 @@ fields:
     order: 0
     defaultField: false
   - name: wallet
-    label: wallet
+    label: Carteira
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -67,7 +47,7 @@ fields:
     order: 0
     defaultField: false
   - name: variation
-    label: variation
+    label: Variação
     optionsType:
       Number:
         formatType: number
@@ -86,7 +66,7 @@ fields:
     order: 0
     defaultField: false
   - name: variation_wallet
-    label: variation_wallet
+    label: Variação Carteira
     optionsType:
       Number:
         formatType: currency
@@ -105,7 +85,7 @@ fields:
     order: 0
     defaultField: false
   - name: wallet_total
-    label: wallet_total
+    label: Total Carteira
     optionsType:
       Number:
         formatType: currency
@@ -122,4 +102,24 @@ fields:
       listMode: true
       cloneMode: true
     order: 0
+    defaultField: false
+  - name: created_at
+    label: Criado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: false
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: -1
     defaultField: false

@@ -1,9 +1,11 @@
 name: Carteira Item
 api: wallet_target
 identifier: wallet_target
+defaultFieldView:
+  title: rank
 fields:
   - name: rank
-    label: rank
+    label: Rank
     optionsType:
       Number:
         formatType: number
@@ -22,7 +24,7 @@ fields:
     order: 0
     defaultField: false
   - name: stock
-    label: stock
+    label: Ativo
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -43,7 +45,7 @@ fields:
     order: 0
     defaultField: false
   - name: wallet
-    label: wallet
+    label: Carteira
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -64,7 +66,7 @@ fields:
     order: 0
     defaultField: false
   - name: recommendation
-    label: recommendation
+    label: Recomendação
     layout:
       xs: "12"
       sm: "12"
@@ -79,7 +81,7 @@ fields:
     order: 0
     defaultField: false
   - name: allocation
-    label: allocation
+    label: Alocação
     optionsType:
       Number:
         formatType: percentage
@@ -98,7 +100,7 @@ fields:
     order: 0
     defaultField: false
   - name: max_price
-    label: max_price
+    label: Preço Máximo
     optionsType:
       Number:
         formatType: currency
@@ -117,7 +119,7 @@ fields:
     order: 0
     defaultField: false
   - name: updated_at
-    label: updated_at
+    label: Atualizado em
     optionsType:
       Date:
         dateFormat: DD/MM/YYYY
@@ -130,10 +132,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: true
-      addMode: true
+      editMode: false
+      addMode: false
       listMode: true
-      cloneMode: true
+      cloneMode: false
     order: 0
     defaultField: false
 relationships:

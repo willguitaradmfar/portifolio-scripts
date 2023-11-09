@@ -1,4 +1,4 @@
-name: Stock Action
+name: Ativos (Ticker)
 api: stock_action
 identifier: stock_action
 defaultFieldView:
@@ -33,7 +33,7 @@ fields:
       cloneMode: true
     order: 0
   - name: current_price
-    label: current_price
+    label: Preço Atual
     optionsType:
       Number:
         formatType: currency
@@ -51,7 +51,7 @@ fields:
       cloneMode: true
     order: 0
   - name: updated_at
-    label: updated_at
+    label: Atualizado em
     optionsType:
       Date:
         dateFormat: DD/MM/YYYY
@@ -124,7 +124,7 @@ fields:
       cloneMode: true
     order: 0
   - name: updated_info_at
-    label: updated_info_at
+    label: Info Atualizada em
     optionsType:
       Date:
         dateFormat: DD/MM/YYYY
@@ -143,7 +143,7 @@ fields:
       cloneMode: true
     order: 0
   - name: previous_quote_name
-    label: previous_quote_name
+    label: Anterior Quote Name
     layout:
       xs: "12"
       sm: "12"
@@ -255,7 +255,7 @@ fields:
       cloneMode: true
     order: 0
   - name: lpa
-    label: lpa
+    label: LPA
     optionsType:
       Number:
         formatType: number
@@ -273,7 +273,7 @@ fields:
       cloneMode: true
     order: 0
   - name: vpa
-    label: vpa
+    label: VPA
     optionsType:
       Number:
         formatType: number

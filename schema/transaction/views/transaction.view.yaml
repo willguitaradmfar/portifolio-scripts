@@ -1,4 +1,4 @@
-name: Transação
+name: Transações
 api: transaction
 identifier: transaction
 workspaces:
@@ -8,7 +8,7 @@ defaultFieldView:
   startDate: date
 fields:
   - name: stock
-    label: stock
+    label: Ativo
     optionsType:
       DynamicSelect:
         diplayFields:
@@ -100,7 +100,7 @@ fields:
       cloneMode: true
     order: 0
   - name: order
-    label: order
+    label: Ordem
     optionsType:
       Number:
         formatType: number
@@ -137,7 +137,7 @@ fields:
       cloneMode: true
     order: -1
   - name: quantity_acc
-    label: quantity_acc
+    label: Quantidade Acumulada
     optionsType:
       Number:
         formatType: number
@@ -155,7 +155,7 @@ fields:
       cloneMode: true
     order: 0
   - name: avg_price_acc
-    label: avg_price_acc
+    label: Preço Médio Acumulado
     optionsType:
       Number:
         formatType: currency
@@ -173,7 +173,7 @@ fields:
       cloneMode: true
     order: 0
   - name: total_acc
-    label: total_acc
+    label: Total Acumulado
     optionsType:
       Number:
         formatType: currency
@@ -191,7 +191,7 @@ fields:
       cloneMode: true
     order: 0
   - name: total
-    label: total
+    label: Total
     optionsType:
       Number:
         formatType: currency
@@ -262,7 +262,7 @@ fields:
       cloneMode: true
     order: 0
   - name: institution
-    label: institution
+    label: Instituição
     layout:
       xs: "12"
       sm: "12"

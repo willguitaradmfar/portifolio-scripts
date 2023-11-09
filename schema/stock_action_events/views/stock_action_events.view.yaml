@@ -25,7 +25,7 @@ fields:
     order: 0
     defaultField: false
   - name: date
-    label: date
+    label: Date
     optionsType:
       Date:
         dateFormat: DD/MM/YYYY
@@ -45,7 +45,7 @@ fields:
     order: 0
     defaultField: false
   - name: type
-    label: type
+    label: Type
     layout:
       xs: "12"
       sm: "12"
@@ -60,7 +60,7 @@ fields:
     order: 0
     defaultField: false
   - name: quantity
-    label: quantity
+    label: Quantity
     optionsType:
       Number:
         formatType: number
@@ -79,7 +79,7 @@ fields:
     order: 0
     defaultField: false
   - name: price
-    label: price
+    label: Price
     optionsType:
       Number:
         formatType: currency
