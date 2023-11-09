@@ -1,0 +1,25 @@
+name: wallet_target_user_history
+fields:
+  - name: created_at
+    typeField: Date
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: user
+    typeField: DynamicSelect
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: authentication
+  - name: wallet
+    typeField: DynamicSelect
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: wallet
+  - name: variation
+    typeField: Number
+  - name: variation_wallet
+    typeField: Number
+  - name: wallet_total
+    typeField: Number

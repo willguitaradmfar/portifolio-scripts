@@ -1,0 +1,37 @@
+name: stock_action_events
+model: stock_action_events
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+fields:
+  - name: stock
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - setor
+      isList: true
+      isGet: true
+  - name: date
+    select:
+      isList: true
+      isGet: true
+  - name: type
+    select:
+      optionsType:
+        StaticSelect:
+          hasSearch: false
+      isList: true
+      isGet: true
+  - name: quantity
+    select:
+      isList: true
+      isGet: true
+  - name: price
+    select:
+      isList: true
+      isGet: true

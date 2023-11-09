@@ -1,0 +1,394 @@
+name: Wallet User
+api: wallet_target_user
+identifier: wallet_target_user
+fields:
+  - name: user
+    label: user
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - email
+        api: authentication
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet_target
+    label: Target
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - rank
+          - allocation
+          - max_price
+        api: wallet_target
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: updated_at
+    label: updated_at
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: stock
+    label: stock
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - setor
+        api: stock_action
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: quantity
+    label: quantity
+    optionsType:
+      Number:
+        formatType: number
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: avg_price_acc
+    label: Price AVG
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: current_price
+    label: Price
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: total_acc
+    label: Total Action
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: profit_acc
+    label: Profit Acc.
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet_total
+    label: Total
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet_allocation
+    label: Alloc.
+    optionsType:
+      Number:
+        formatType: percentage
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet_need_allocation
+    label: Need Alloc.
+    optionsType:
+      Number:
+        formatType: percentage
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet_allocation_diff
+    label: Alloc. Diff
+    optionsType:
+      Number:
+        formatType: percentage
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: profit_acc_projection
+    label: Proj. Out
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: variation_wallet
+    label: Var. R$
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: variation
+    label: variation
+    optionsType:
+      Number:
+        formatType: number
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: current_month_sell
+    label: Vendas Mês
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: current_month_sell_profit
+    label: Lucro Mês
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet
+    label: wallet
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - description
+        api: wallet
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: variation_wallet_total
+    label: Total Var
+    optionsType:
+      Number:
+        formatType: number
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false

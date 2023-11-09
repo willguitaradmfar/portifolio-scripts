@@ -1,0 +1,99 @@
+name: Stock Events
+api: stock_action_events
+identifier: stock_action_events
+fields:
+  - name: stock
+    label: Stock
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - setor
+        api: stock_action
+        view: stock_action
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: date
+    label: date
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: false
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: type
+    label: type
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: quantity
+    label: quantity
+    optionsType:
+      Number:
+        formatType: number
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: price
+    label: price
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false

@@ -1,0 +1,36 @@
+name: llmprompttemplate
+fields:
+  - name: createdAt
+    typeField: Date
+    description: Data de criação do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: updatedAt
+    typeField: Date
+    description: Data de atualização do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+        defaultDateNowOnUpdate: true
+  - name: name
+    typeField: String
+    description: Nome do template
+    required: true
+  - name: description
+    typeField: String
+    description: Descrição do template
+  - name: prompt
+    typeField: String
+    description: Prompt do template
+    required: true
+  - name: isActive
+    typeField: Boolean
+    description: Ativo
+  - name: llmbot
+    typeField: DynamicSelect
+    description: Bot
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: llmbot

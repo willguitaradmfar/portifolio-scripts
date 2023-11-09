@@ -1,0 +1,67 @@
+name: Papel
+api: menurole
+identifier: menurole
+defaultFieldView:
+  title: name
+  startDate: null
+  endDate: null
+fields:
+  - name: name
+    label: Nome
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: users
+    label: Usuários
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - email
+        api: authentication
+        view: authentication
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: menus
+    label: Menus
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - path
+        api: menu
+        view: menu
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0

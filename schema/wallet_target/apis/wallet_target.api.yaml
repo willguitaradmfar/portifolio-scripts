@@ -1,0 +1,51 @@
+name: wallet_target
+model: wallet_target
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canDelete: true
+  canUpdate: true
+  canImport: true
+fields:
+  - name: wallet
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - description
+      isList: true
+      isGet: true
+  - name: rank
+    select:
+      isList: true
+      isGet: true
+  - name: recommendation
+    select:
+      optionsType:
+        StaticSelect:
+          hasSearch: false
+      isList: true
+      isGet: true
+  - name: allocation
+    select:
+      isList: true
+      isGet: true
+  - name: max_price
+    select:
+      isList: true
+      isGet: true
+  - name: stock
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - setor
+      isList: true
+      isGet: true
+  - name: updated_at
+    select:
+      isList: true
+      isGet: true

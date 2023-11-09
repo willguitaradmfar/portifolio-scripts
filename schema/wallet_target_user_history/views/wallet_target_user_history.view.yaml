@@ -1,0 +1,125 @@
+name: Wallet User History
+api: wallet_target_user_history
+identifier: wallet_target_user_history
+fields:
+  - name: created_at
+    label: Criado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: false
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: -1
+    defaultField: false
+  - name: user
+    label: user
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - email
+        api: authentication
+        view: authentication
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet
+    label: wallet
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - description
+        api: wallet
+        view: wallet
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: variation
+    label: variation
+    optionsType:
+      Number:
+        formatType: number
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: variation_wallet
+    label: variation_wallet
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet_total
+    label: wallet_total
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false

@@ -1,0 +1,52 @@
+name: transaction
+fields:
+  - name: stock
+    typeField: DynamicSelect
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: stock_action
+  - name: user
+    typeField: DynamicSelect
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: authentication
+  - name: quantity
+    typeField: Number
+    required: true
+  - name: price
+    typeField: Number
+    required: true
+  - name: operation
+    typeField: StaticSelect
+    required: true
+    optionsType:
+      StaticSelect:
+        optionsList:
+          - Venda
+          - Compra
+          - SPLIT
+          - DIVIDEND
+  - name: date
+    typeField: Date
+    required: true
+  - name: institution
+    typeField: String
+    required: true
+  - name: quantity_acc
+    typeField: Number
+  - name: avg_price_acc
+    typeField: Number
+  - name: total_acc
+    typeField: Number
+  - name: total
+    typeField: Number
+  - name: profit
+    typeField: Number
+  - name: profit_acc
+    typeField: Number
+  - name: was_imported
+    typeField: Boolean
+  - name: order
+    typeField: Number

@@ -1,0 +1,38 @@
+name: llmbot
+fields:
+  - name: createdAt
+    typeField: Date
+    description: Data de criação do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: updatedAt
+    typeField: Date
+    description: Data de atualização do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+        defaultDateNowOnUpdate: true
+  - name: name
+    typeField: String
+    description: Nome do bot
+    required: true
+  - name: isActive
+    typeField: Boolean
+    description: Ativo
+  - name: parameters
+    typeField: JSON
+    description: Parameters bot
+  - name: authentication
+    typeField: DynamicSelect
+    description: Parameters bot
+    optionsType:
+      DynamicSelect:
+        model: authentication
+  - name: scripts
+    typeField: DynamicSelect
+    description: Scripts bot
+    isArray: true
+    optionsType:
+      DynamicSelect:
+        model: code

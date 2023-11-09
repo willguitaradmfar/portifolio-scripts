@@ -1,0 +1,9 @@
+name: wallet
+fields:
+  - name: name
+    typeField: String
+    unique: true
+  - name: description
+    typeField: String
+  - name: is_active
+    typeField: Boolean

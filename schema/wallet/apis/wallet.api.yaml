@@ -1,0 +1,27 @@
+name: wallet
+model: wallet
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+fields:
+  - name: name
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: description
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: is_active
+    select:
+      isList: true
+      isGet: true

@@ -1,0 +1,93 @@
+name: Menu
+api: menu
+identifier: menu
+defaultFieldView:
+  title: path
+  startDate: null
+  endDate: null
+fields:
+  - name: name
+    label: Nome
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "6"
+      lg: "6"
+      xl: "6"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: path
+    label: Local
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "6"
+      lg: "6"
+      xl: "6"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: icon
+    label: Ícone
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "6"
+      lg: "6"
+      xl: "6"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: folder
+    label: Pasta
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "6"
+      lg: "6"
+      xl: "6"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: isVisible
+    label: Visível
+    optionsType:
+      Boolean:
+        isSwitch: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "6"
+      lg: "6"
+      xl: "6"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0

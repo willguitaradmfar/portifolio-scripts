@@ -1,5 +1,5 @@
 {
-  "name": "scripts",
+  "name": "portifolio-scripts",
   "version": "1.0.0",
   "description": "## criado a partir do ORKI",
   "main": "ACTION_IMPORT_NEGOCIACAO_PORTAL_DO_INVESTIDOR.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "eventsource": "^2.0.2",
     "node-fetch": "^3.3.1",
-    "orki-core-script": "^0.0.33"
+    "orki-core-script": "^0.0.35",
+    "orki-core-view": "^0.0.44"
   }
 }

@@ -1,0 +1,118 @@
+name: LLM Fatos
+api: llmfact
+identifier: llmfact
+defaultFieldView:
+  title: fact
+fields:
+  - name: fact
+    label: Fato
+    optionsType:
+      String:
+        component: textarea
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: prompt
+    label: Prompt Template
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - prompt
+        api: llmprompttemplate
+        view: llmprompttemplate
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: embeddedAt
+    label: Incorporado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: 0
+  - name: createdAt
+    label: Criado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: false
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: 0
+  - name: updatedAt
+    label: Atualizado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: false
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: 0
+  - name: isActive
+    label: Ativo
+    optionsType:
+      Boolean:
+        isSwitch: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: -1

@@ -1,0 +1,90 @@
+name: transaction
+model: transaction
+workspaces:
+  - api
+permissions:
+  canCreate: true
+  canGet: true
+  canUpdate: true
+  canList: true
+  canDelete: true
+  isPublic: true
+  canImport: false
+  canExport: true
+fields:
+  - name: stock
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - setor
+      isList: true
+      isGet: true
+  - name: user
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - email
+      isList: true
+      isGet: true
+  - name: quantity
+    select:
+      isList: true
+      isGet: true
+  - name: price
+    select:
+      isList: true
+      isGet: true
+  - name: operation
+    select:
+      optionsType:
+        StaticSelect:
+          hasSearch: false
+      isList: true
+      isGet: true
+  - name: date
+    select:
+      isList: true
+      isGet: true
+  - name: institution
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: quantity_acc
+    select:
+      isList: true
+      isGet: true
+  - name: avg_price_acc
+    select:
+      isList: true
+      isGet: true
+  - name: total_acc
+    select:
+      isList: true
+      isGet: true
+  - name: total
+    select:
+      isList: true
+      isGet: true
+  - name: profit
+    select:
+      isList: true
+      isGet: true
+  - name: profit_acc
+    select:
+      isList: true
+      isGet: true
+  - name: was_imported
+    select:
+      isList: true
+      isGet: true
+  - name: order
+    select:
+      isList: true
+      isGet: true

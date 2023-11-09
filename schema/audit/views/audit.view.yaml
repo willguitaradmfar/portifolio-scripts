@@ -1,0 +1,153 @@
+name: Audit trail
+api: audit
+identifier: audit
+fields:
+  - name: createdAt
+    label: Date
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: -1
+  - name: author
+    label: Author
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - email
+        api: authentication
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: model_name
+    label: Model name
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: module_name
+    label: Module
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: api_name
+    label: Api
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: difference
+    label: Difference
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: action
+    label: Action
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: docId
+    label: Doc Id
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: headers
+    label: Headers
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0

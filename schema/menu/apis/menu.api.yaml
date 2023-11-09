@@ -1,0 +1,41 @@
+name: menu
+model: menu
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+fields:
+  - name: name
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: path
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: icon
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: folder
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: isVisible
+    select:
+      isList: true
+      isGet: true

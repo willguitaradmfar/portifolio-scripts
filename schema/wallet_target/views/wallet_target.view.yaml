@@ -1,0 +1,143 @@
+name: Carteira Item
+api: wallet_target
+identifier: wallet_target
+fields:
+  - name: rank
+    label: rank
+    optionsType:
+      Number:
+        formatType: number
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: stock
+    label: stock
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - setor
+        api: stock_action
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: wallet
+    label: wallet
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+          - description
+        api: wallet
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: recommendation
+    label: recommendation
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: allocation
+    label: allocation
+    optionsType:
+      Number:
+        formatType: percentage
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: max_price
+    label: max_price
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+  - name: updated_at
+    label: updated_at
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+    defaultField: false
+relationships:
+  - fields:
+      - wallet_target
+    name: Wallet User
+    view: wallet_target_user

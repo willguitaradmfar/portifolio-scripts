@@ -1,0 +1,59 @@
+name: Carteira
+api: wallet
+identifier: wallet
+defaultFieldView:
+  title: name
+fields:
+  - name: name
+    label: Nome
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: description
+    label: Descrição
+    optionsType:
+      String:
+        component: richtext
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: is_active
+    label: Ativo
+    optionsType:
+      Boolean:
+        isSwitch: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+relationships:
+  - fields:
+      - wallet
+    name: Itens
+    view: wallet_target

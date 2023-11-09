@@ -1,0 +1,137 @@
+name: LLM Prompts
+api: llmprompttemplate
+identifier: llmprompttemplate
+defaultFieldView:
+  title: name
+fields:
+  - name: name
+    label: Nome
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: description
+    label: Descrição
+    optionsType:
+      String:
+        component: textfield
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: prompt
+    label: Prompt. Use {facts} e {userName} para substituir os valores
+    optionsType:
+      String:
+        component: textarea
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: createdAt
+    label: Criado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: 0
+  - name: updatedAt
+    label: Atualizado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: 0
+  - name: llmbot
+    label: Bot
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - name
+        api: llmbot
+        view: llmbot
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: isActive
+    label: Ativo ?
+    optionsType:
+      Boolean:
+        isSwitch: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: -1
+relationships:
+  - fields:
+      - prompt
+    name: Fatos
+    view: llmfact

@@ -1,0 +1,34 @@
+name: menurole
+model: menurole
+permissions:
+  canCreate: true
+  canGet: true
+  canUpdate: true
+  canList: true
+  canDelete: true
+fields:
+  - name: name
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: users
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - email
+      isList: true
+      isGet: true
+  - name: menus
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - path
+      isList: true
+      isGet: true

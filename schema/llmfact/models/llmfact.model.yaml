@@ -1,0 +1,38 @@
+name: llmfact
+fields:
+  - name: createdAt
+    typeField: Date
+    description: Data de criação do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: updatedAt
+    typeField: Date
+    description: Data de atualização do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+        defaultDateNowOnUpdate: true
+  - name: embeddedAt
+    typeField: Date
+    description: Data de incorporação do registro
+  - name: embedding
+    typeField: JSON
+    description: Vetor de incorporação do registro
+  - name: fact
+    typeField: String
+    description: Fato
+    required: true
+  - name: isActive
+    typeField: Boolean
+    description: Ativo
+  - name: factHash
+    typeField: String
+    description: Hash do fato
+  - name: prompt
+    typeField: DynamicSelect
+    description: Prompt do fato
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: llmprompttemplate

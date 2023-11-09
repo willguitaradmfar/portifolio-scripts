@@ -1,0 +1,61 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {  
+            "type": "shell",
+            "label": "Script execute",
+            "command": "npx orki-core-script execute -f ${file}",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },            
+            "presentation": {
+                "clear": true,
+                "echo": true,
+                "panel": "dedicated"
+            },
+        },
+        {  
+            "type": "shell",
+            "label": "Script publish",
+            "command": "npx orki-core-script publish -f ${file}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },            
+            "presentation": {
+                "clear": true,
+                "echo": true,
+                "panel": "dedicated"
+            },
+        },
+        {  
+            "type": "shell",
+            "label": "Schema deploy",
+            "command": "npx orki-core-view deploy -f ${file}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },            
+            "presentation": {
+                "clear": true,
+                "echo": true,
+                "panel": "dedicated"
+            },
+        },
+        {  
+            "type": "shell",
+            "label": "Script congifure",
+            "command": "npx orki-core-view configure",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },            
+            "presentation": {
+                "clear": true,
+                "echo": true,
+                "panel": "dedicated"
+            },
+        }
+    ]
+}

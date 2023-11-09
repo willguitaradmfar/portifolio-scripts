@@ -1,0 +1,43 @@
+name: wallet_target_user_history
+model: wallet_target_user_history
+permissions:
+  canGet: true
+  canCreate: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+fields:
+  - name: created_at
+    select:
+      isList: true
+      isGet: true
+  - name: user
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - email
+      isList: true
+      isGet: true
+  - name: wallet
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+            - description
+      isList: true
+      isGet: true
+  - name: variation
+    select:
+      isList: true
+      isGet: true
+  - name: variation_wallet
+    select:
+      isList: true
+      isGet: true
+  - name: wallet_total
+    select:
+      isList: true
+      isGet: true

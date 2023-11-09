@@ -1,0 +1,39 @@
+name: wallet_target
+fields:
+  - name: wallet
+    typeField: DynamicSelect
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: wallet
+  - name: rank
+    typeField: Number
+    required: true
+  - name: recommendation
+    typeField: StaticSelect
+    required: true
+    optionsType:
+      StaticSelect:
+        optionsList:
+          - LONG
+          - SHORT
+          - KEEP
+          - OUT
+  - name: allocation
+    typeField: Number
+    required: true
+  - name: max_price
+    typeField: Number
+    required: true
+  - name: stock
+    typeField: DynamicSelect
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: stock_action
+  - name: updated_at
+    typeField: Date
+    optionsType:
+      Date:
+        defaultDateNowOnUpdate: true
+        defaultDateNowOnCreate: true

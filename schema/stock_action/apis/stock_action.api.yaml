@@ -1,0 +1,110 @@
+name: stock_action
+model: stock_action
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+fields:
+  - name: name
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: current_price
+    select:
+      isList: true
+      isGet: true
+  - name: updated_at
+    select:
+      isList: true
+      isGet: true
+  - name: is_active
+    select:
+      isList: true
+      isGet: true
+  - name: variation
+    select:
+      isList: true
+      isGet: true
+  - name: can_update
+    select:
+      isList: true
+      isGet: true
+  - name: ev_ebitda
+    select:
+      isList: true
+      isGet: true
+  - name: ev_receita_liquida
+    select:
+      isList: true
+      isGet: true
+  - name: setor
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: quote_name
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: updated_price_at
+    select:
+      isList: true
+      isGet: true
+  - name: updated_info_at
+    select:
+      isList: true
+      isGet: true
+  - name: country
+    select:
+      optionsType:
+        StaticSelect:
+          hasSearch: false
+      isList: true
+      isGet: true
+  - name: previous_quote_name
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: has_error_update_price
+    select:
+      isList: true
+      isGet: true
+  - name: bolsa
+    select:
+      optionsType:
+        StaticSelect:
+          hasSearch: false
+      isList: true
+      isGet: true
+  - name: lpa
+    select:
+      isList: true
+      isGet: true
+  - name: vpa
+    select:
+      isList: true
+      isGet: true
+  - name: graham
+    select:
+      isList: true
+      isGet: true
+  - name: investing_link
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
