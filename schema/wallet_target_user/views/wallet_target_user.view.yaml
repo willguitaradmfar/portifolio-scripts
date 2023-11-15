@@ -1,6 +1,8 @@
 name: Carteira do Usuário
 api: wallet_target_user
 identifier: wallet_target_user
+defaultFieldView:
+  title: variation
 fields:
   - name: user
     label: Usuário
@@ -312,7 +314,7 @@ fields:
       addMode: true
       listMode: true
       cloneMode: true
-    order: 0
+    order: 1
     defaultField: false
   - name: current_month_sell
     label: Vendas Mês

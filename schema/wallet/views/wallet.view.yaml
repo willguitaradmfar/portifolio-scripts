@@ -55,5 +55,9 @@ fields:
 relationships:
   - fields:
       - wallet
+    name: Alocação real
+    view: wallet_target_user
+  - fields:
+      - wallet
     name: Itens
     view: wallet_target
