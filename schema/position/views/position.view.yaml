@@ -46,6 +46,24 @@ fields:
       listMode: true
       cloneMode: true
     order: 0
+  - name: precoMedioFechamento
+    label: Preço Médio de Fechamento
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
   - name: precoFechamento
     label: Preço de Fechamento
     optionsType:
@@ -63,7 +81,7 @@ fields:
       addMode: true
       listMode: true
       cloneMode: true
-    order: 0  
+    order: 0
   - name: variacaoFechamento
     label: Variação de Fechamento
     optionsType:
@@ -123,6 +141,42 @@ fields:
     optionsType:
       Number:
         formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: lucroMedio
+    label: Lucro Médio
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: -1
+  - name: lucroMedioVariacao
+    label: Variação do Lucro Médio
+    optionsType:
+      Number:
+        formatType: number
         decimalPlaces: 2
     layout:
       xs: "12"
@@ -227,7 +281,7 @@ fields:
       addMode: false
       listMode: true
       cloneMode: false
-    order: -1
+    order: 0
 actions:
   - name: Importa posições do portal do investidor
     identifier: action_portal_do_investidor_position

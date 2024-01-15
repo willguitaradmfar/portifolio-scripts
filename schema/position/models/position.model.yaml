@@ -10,6 +10,12 @@ fields:
     typeField: Number
   - name: precoFechamento
     typeField: Number
+  - name: precoMedioFechamento
+    typeField: Number
+  - name: lucroMedio
+    typeField: Number
+  - name: lucroMedioVariacao
+    typeField: Number
   - name: variacaoFechamento
     typeField: Number
   - name: variacaoValorAtualizado

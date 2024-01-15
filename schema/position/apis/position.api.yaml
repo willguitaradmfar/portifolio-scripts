@@ -29,6 +29,18 @@ fields:
     select:
       isList: true
       isGet: true
+  - name: lucroMedio
+    select:
+      isList: true
+      isGet: true
+  - name: lucroMedioVariacao
+    select:
+      isList: true
+      isGet: true
+  - name: precoMedioFechamento
+    select:
+      isList: true
+      isGet: true
   - name: variacaoFechamento
     select:
       isList: true

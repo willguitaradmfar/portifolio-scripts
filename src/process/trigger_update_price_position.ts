@@ -5,7 +5,7 @@ const Main: OrkiTrigger = {
         // in percent
         const variacaoFechamento = input?.variation
         // calculado a partir do preco de fechamento e variacao
-        const variacaoPrecoFechamento = (precoFechamento * variacaoFechamento) / 100        
+        const variacaoPrecoFechamento = (precoFechamento * variacaoFechamento) / 100
 
         if (!code) {
             return {
@@ -38,11 +38,18 @@ const Main: OrkiTrigger = {
                 message: 'variacaoValorAtualizado is NaN'
             }
         }
+        const valorInvestido = position.quantidade * position.precoMedioFechamento
+
+        const lucroMedio = valorAtualizado - valorInvestido
+
+        const lucroMedioVariacao = (lucroMedio / valorInvestido)
 
         await utils.coll('position')
             .updateOne({ _id: position._id }, {
                 $set: {
                     precoFechamento,
+                    lucroMedio,
+                    lucroMedioVariacao: lucroMedioVariacao * 100,
                     valorAtualizado,
                     variacaoFechamento,
                     variacaoPrecoFechamento,
