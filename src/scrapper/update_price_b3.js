@@ -16,6 +16,11 @@ return async ({
             quote_name
         })
 
+        await utils.notify('price.updated', {
+            code: quote_name,
+            price: current_price,
+        })
+
         if (!stock) {
             stock = new StockAction({
                 name: quote_name,

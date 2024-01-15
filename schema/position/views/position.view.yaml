@@ -1,0 +1,251 @@
+name: Position
+api: position
+identifier: position
+defaultFieldView:
+  title: codigoNegociacao
+fields:
+  - name: codigoNegociacao
+    label: Código de Negociação
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: tipoProduto
+    label: Tipo de Produto
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: quantidade
+    label: Quantidade
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: precoFechamento
+    label: Preço de Fechamento
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0  
+  - name: variacaoFechamento
+    label: Variação de Fechamento
+    optionsType:
+      Number:
+        formatType: number
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: variacaoPrecoFechamento
+    label: Variação de Preço de Fechamento
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: variacaoValorAtualizado
+    label: Variação de Valor Atualizado
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: valorAtualizado
+    label: Valor Atualizado
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: valorAplicado
+    label: Valor Aplicado
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: valorBruto
+    label: Valor Bruto
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: valorLiquido
+    label: Valor Líquido
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: vencimento
+    label: Vencimento
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: ""
+        isTimeAgo: false
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: updated_at
+    label: Atualizado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: ""
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: -1
+actions:
+  - name: Importa posições do portal do investidor
+    identifier: action_portal_do_investidor_position
+    code: action_portal_do_investidor_position
+    description: Importa posições do portal do investidor
+    icon: mdi-file-import
+    inputs:
+      - name: json
+        label: JSON
+        typeField: String
+        optionsType:
+          String:
+            component: textarea
+        layout:
+          xs: "12"
+          sm: "12"
+          md: "12"
+          lg: "12"
+          xl: "12"
+        required: true
+      

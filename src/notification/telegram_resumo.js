@@ -2,9 +2,6 @@ return async ({
     utils,
     input
 }) => {
-
-    await utils.invoke('consolidate_wallet')
-
     const nowWeek = utils.dayjs().format('d')
     const nowHour = parseInt(utils.dayjs().add(-3, 'hour').format('HH'))
 
@@ -22,70 +19,69 @@ return async ({
         }
     }
 
-    const WalletTargetUserHistory = await utils.coll('wallet_target_user_history')
-
-    const telegram_token = await utils.param('TELEGRAM_TOKEN')
-    const chat_id = await utils.param('CHAT_ID')
-
-    const active_wallets = await utils.coll('wallet').find({
-        is_active: true
-    }, {
-        _id: 1
-    })
-
-    const wallet_user = await utils.coll('wallet_target_user').aggregate([{
-        $match: {
-            wallet: {
-                $in: active_wallets.map(wallet => wallet._id)
-            }
-        }
-    }, {
+    let porTipo = await utils.coll('position').aggregate([{
         $group: {
-            _id: {
-                user: "$user",
-                wallet: "$wallet",
+            _id: '$tipoProduto',
+            total: {
+                $sum: '$valorAtualizado'
             },
-            variation_wallet: {
-                $sum: "$variation_wallet"
-            },
-            variation: {
-                $avg: "$variation_wallet_total"
-            },
-            wallet_total: {
-                $first: "$wallet_total"
+            totalVariacao: {
+                $sum: '$variacaoValorAtualizado'
             }
-        }
-    }, {
-        $sort: {
-            '_id.wallet': 1
         }
     }])
 
     const results = []
 
+    const response = await utils.fetch(`https://economia.awesomeapi.com.br/USD-BRL/1?format=json`).then(res => res.json())
+    let dolar = 1
+
+    if (response && response.length) {
+        const [first] = response
+        if (first && first.ask) dolar = first.ask
+    }
+
+    // resolve dolar
+    porTipo = porTipo.map(tipo => {
+        if (tipo._id === 'NASDAQ') {
+            tipo.total = tipo.total * dolar
+            tipo.totalVariacao = tipo.totalVariacao * dolar
+        }
+        return tipo
+    })
+
+    // add TOTAL
+    porTipo.push({
+        _id: 'TOTAL',
+        total: porTipo.reduce((acc, curr) => acc + curr.total, 0),
+        totalVariacao: porTipo.reduce((acc, curr) => acc + curr.totalVariacao, 0)
+    })
+
     let message = ''
 
-    for (const wallet of wallet_user) {
-        const wallet_populate = await utils.coll('wallet')
-            .findById(wallet._id.wallet)
+    const dateNow = new Date()
+
+    for (const tipo of porTipo.sort((a, b) => a._id.localeCompare(b._id))) {
+        const percent = tipo.totalVariacao / tipo.total
 
         const text = `
-${wallet_populate.name}: ${wallet.variation.toFixed(2)}%
-${wallet.variation_wallet.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}. 
+${tipo._id}: 
+${percent.toLocaleString('pt-br', { style: 'percent', minimumFractionDigits: 2 })} (${tipo.totalVariacao.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })})
+${tipo.total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}.
 `
         message += text
 
-        const history = new WalletTargetUserHistory({
-            created_at: new Date(),
-            user: wallet._id.user,
-            wallet: wallet._id.wallet,
-            variation: wallet.variation,
-            variation_wallet: wallet.variation_wallet,
-            wallet_total: wallet.wallet_total
+        await utils.coll('position_history').create({
+            tipoProduto: tipo._id,
+            valorAtualizado: tipo.total,
+            percent: percent * 100,
+            variacaoValorAtualizado: tipo.totalVariacao,
+            created_at: dateNow
         })
-
-        await history.save()
     }
+
+    const telegram_token = await utils.param('TELEGRAM_TOKEN')
+    const chat_id = await utils.param('CHAT_ID')
 
     const result = await utils.fetch(`https://api.telegram.org/bot${telegram_token}/sendMessage`, {
         method: 'POST',

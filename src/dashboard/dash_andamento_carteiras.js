@@ -7,58 +7,34 @@ return async ({
 
     if (is_metadata) {
         const fields = [{
-            label: 'Carteira',
-            name: 'wallet',
+            label: 'Tipo',
+            name: 'tipoProduto',
             typeField: 'String',
         }, {
             label: 'Criado em',
             name: 'created_at',
             typeField: 'Date',
         }, {
-            label: 'Variação',
-            name: 'variation',
-            typeField: 'Number',
-        }, {
-            label: 'Valor',
-            name: 'variation_wallet',
-            typeField: 'Number',
-        }, {
             label: 'Total',
-            name: 'wallet_total',
+            name: 'valorAtualizado',
+            typeField: 'Number',
+        }, {
+            label: 'Variação',
+            name: 'percent',
+            typeField: 'Number',
+        }, {
+            label: 'Variação (R$)',
+            name: 'variacaoValorAtualizado',
             typeField: 'Number',
         }]
         return { fields }
     }
 
-    let aggregate = []
-
-    aggregate.push({
-        $lookup: {
-            from: "wallet",
-            localField: "wallet",
-            foreignField: "_id",
-            as: "wallet"
-        }
-    })
-
-    aggregate.push({
-        $unwind: "$wallet"
-    })
-
-    aggregate.push({
-        $project: {
-            _id: 1,
-            wallet: "$wallet.name",
-            created_at: 1,
-            variation: 1,
-            variation_wallet: 1,
-            wallet_total: 1
-        }
-    })
+    let aggregate = []    
 
     return {
         data: await utils
-            .coll('wallet_target_user_history')
+            .coll('position_history')
             .aggregate(aggregate.concat(pipeline))        
     }
 }

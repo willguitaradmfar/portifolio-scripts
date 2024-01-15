@@ -1,0 +1,69 @@
+name: position
+model: position
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+fields:
+  - name: codigoNegociacao
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: tipoProduto
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: quantidade
+    select:
+      isList: true
+      isGet: true
+  - name: precoFechamento
+    select:
+      isList: true
+      isGet: true
+  - name: variacaoFechamento
+    select:
+      isList: true
+      isGet: true
+  - name: variacaoValorAtualizado
+    select:
+      isList: true
+      isGet: true
+  - name: variacaoPrecoFechamento
+    select:
+      isList: true
+      isGet: true
+  - name: valorAtualizado
+    select:
+      isList: true
+      isGet: true
+  - name: valorAplicado
+    select:
+      isList: true
+      isGet: true
+  - name: valorBruto
+    select:
+      isList: true
+      isGet: true
+  - name: valorLiquido
+    select:
+      isList: true
+      isGet: true
+  - name: vencimento
+    select:
+      isList: true
+      isGet: true
+  - name: updated_at
+    select:
+      isList: true
+      isGet: true
+
+  

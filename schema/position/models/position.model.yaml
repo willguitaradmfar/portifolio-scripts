@@ -1,0 +1,34 @@
+name: position
+fields:
+  - name: codigoNegociacao
+    typeField: String
+    required: true
+    unique: true
+  - name: tipoProduto
+    typeField: String
+  - name: quantidade
+    typeField: Number
+  - name: precoFechamento
+    typeField: Number
+  - name: variacaoFechamento
+    typeField: Number
+  - name: variacaoValorAtualizado
+    typeField: Number
+  - name: variacaoPrecoFechamento
+    typeField: Number
+  - name: valorAtualizado
+    typeField: Number
+  - name: valorAplicado
+    typeField: Number
+  - name: valorBruto
+    typeField: Number
+  - name: valorLiquido
+    typeField: Number
+  - name: vencimento
+    typeField: Date
+  - name: updated_at
+    typeField: Date
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+        defaultDateNowOnUpdate: true  
