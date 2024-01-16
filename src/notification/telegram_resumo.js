@@ -19,6 +19,8 @@ return async ({
         }
     }
 
+    await utils.invoke('consolidate')
+
     let porTipo = await utils.coll('position').aggregate([{
         $group: {
             _id: '$tipoProduto',

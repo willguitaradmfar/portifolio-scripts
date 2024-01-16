@@ -24,6 +24,12 @@ fields:
     typeField: Number
   - name: valorAtualizado
     typeField: Number
+  - name: recomendacaoDeAlocacao
+    typeField: Number
+  - name: alocado
+    typeField: Number
+  - name: precisaAlocar
+    typeField: Number
   - name: valorAplicado
     typeField: Number
   - name: valorBruto

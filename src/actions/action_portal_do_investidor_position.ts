@@ -58,7 +58,6 @@ const Main: OrkiAction = {
 
         for (const iten of json.itens) {
             for (const posic of iten.posicoes) {
-                posic.tipoProduto = iten.tipoProduto
                 posics.push(posic)
             }
         }

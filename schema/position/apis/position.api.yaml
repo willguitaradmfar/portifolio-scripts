@@ -57,6 +57,18 @@ fields:
     select:
       isList: true
       isGet: true
+  - name: recomendacaoDeAlocacao
+    select:
+      isList: true
+      isGet: true
+  - name: alocado
+    select:
+      isList: true
+      isGet: true
+  - name: precisaAlocar
+    select:
+      isList: true
+      isGet: true
   - name: valorAplicado
     select:
       isList: true
