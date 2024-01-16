@@ -27,7 +27,7 @@ return async ({
             label: 'Total acumulado',
             typeField: 'Number',
         }, {
-            name: 'lucroMedio',
+            name: 'variacaoValorAtualizado',
             label: 'Lucro acumulado',
             typeField: 'Number',
         }, {
@@ -39,8 +39,8 @@ return async ({
             label: 'Lucro acumulado projetado',
             typeField: 'Number',
         }, {
-            name: 'lucroMedioVariacao',
-            label: 'Variação da carteira',
+            name: 'precisaAlocar',
+            label: 'Precisa alocar',
             typeField: 'Number',
         }]
         return { fields }

@@ -45,6 +45,11 @@ const Main: OrkiTrigger = {
 
             if (!quotation) {
                 utils.log(`Erro ao atualizar ${position.codigoNegociacao} ...`)
+                await utils.notify('price.updated', {
+                    code: position.codigoNegociacao,
+                    price: position.precoFechamento,
+                    variation: position.variacaoFechamento
+                })
                 continue
             }
 

@@ -20,40 +20,28 @@ const Main: OrkiTrigger = {
             })
         
         if (!position) return
-        
-        const valorAtualizado = position.quantidade * precoFechamento
 
-        if (Number.isNaN(variacaoPrecoFechamento)) {
-            return {
-                success: false,
-                message: 'variacaoPrecoFechamento is NaN'
-            }
+        let valorAtualizado = position.quantidade * precoFechamento
+
+        const response = await utils.fetch(`https://economia.awesomeapi.com.br/USD-BRL/1?format=json`).then(res => res.json())
+        let dolar = 1
+
+        if (response && response.length) {
+            const [first] = response
+            if (first && first.ask) dolar = first.ask
         }
 
-        const variacaoValorAtualizado = (position.quantidade * variacaoPrecoFechamento)
-
-        if (Number.isNaN(variacaoValorAtualizado)) {
-            return {
-                success: false,
-                message: 'variacaoValorAtualizado is NaN'
-            }
+        if (position.tipoProduto === 'NASDAQ') {
+            valorAtualizado = valorAtualizado * dolar
         }
-        const valorInvestido = position.quantidade * position.precoMedioFechamento
-
-        const lucroMedio = valorAtualizado - valorInvestido
-
-        const lucroMedioVariacao = (lucroMedio / valorInvestido)
 
         await utils.coll('position')
             .updateOne({ _id: position._id }, {
                 $set: {
                     precoFechamento,
-                    lucroMedio,
-                    lucroMedioVariacao: lucroMedioVariacao * 100,
-                    valorAtualizado,
                     variacaoFechamento,
                     variacaoPrecoFechamento,
-                    variacaoValorAtualizado,
+                    valorAtualizado,
                     updated_at: new Date()
                 }
             })

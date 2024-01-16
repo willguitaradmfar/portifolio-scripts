@@ -1,3 +1,36 @@
+const calcularLucro = ({ position }: any) => {
+    const variacaoPrecoFechamento = (position.precoFechamento * position.variacaoFechamento) / 100
+
+    const valorAtualizado = position.quantidade * position.precoFechamento
+
+    if (Number.isNaN(variacaoPrecoFechamento)) {
+        return {}
+    }
+
+    const variacaoValorAtualizado = (position.quantidade * variacaoPrecoFechamento)
+
+    if (Number.isNaN(variacaoValorAtualizado)) {
+        return {}
+    }
+
+    const valorInvestido = position.quantidade * position.precoMedioFechamento
+
+    const lucroMedio = valorAtualizado - valorInvestido
+
+    const lucroMedioVariacao = (lucroMedio / valorInvestido)
+
+    if (Number.isNaN(lucroMedioVariacao)) {
+        return {}
+    }
+
+    return {
+        variacaoValorAtualizado,
+        lucroMedio,
+        lucroMedioVariacao: lucroMedioVariacao * 100
+    }
+}
+
+
 const Main: OrkiTrigger = {
     main: async function ({ input, utils }: OrkiScriptServer<OrkiScriptTriggerInput>): Promise<any> {
         const all_types = await utils.coll('position')
@@ -30,7 +63,7 @@ const Main: OrkiTrigger = {
             const total = positions.reduce((acc: number, item: any) => acc + item.valorAtualizado, 0)
             utils.log(`Total ${type._id}: ${total}`)
 
-            for(const position of positions) {
+            for (const position of positions) {
                 let recomendacaoDeAlocacao = position.recomendacaoDeAlocacao
 
                 if (utils.isNullOrUnidefined(recomendacaoDeAlocacao)) {
@@ -42,11 +75,17 @@ const Main: OrkiTrigger = {
 
                 utils.log(`Alocado ${position.codigoNegociacao}: ${alocado}/${precisaAlocar}`)
 
+                const lucroCalculado = calcularLucro({ position })
+
+                utils.log(`Lucro calculado ${position.codigoNegociacao}: ${JSON.stringify(lucroCalculado)}`)
+
                 await utils.coll('position')
                     .updateOne({ _id: position._id }, {
                         $set: {
+                            ...lucroCalculado,
                             alocado,
-                            precisaAlocar
+                            precisaAlocar,
+                            updated_at: new Date()
                         }
                     })
             }

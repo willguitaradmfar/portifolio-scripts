@@ -35,23 +35,6 @@ return async ({
 
     const results = []
 
-    const response = await utils.fetch(`https://economia.awesomeapi.com.br/USD-BRL/1?format=json`).then(res => res.json())
-    let dolar = 1
-
-    if (response && response.length) {
-        const [first] = response
-        if (first && first.ask) dolar = first.ask
-    }
-
-    // resolve dolar
-    porTipo = porTipo.map(tipo => {
-        if (tipo._id === 'NASDAQ') {
-            tipo.total = tipo.total * dolar
-            tipo.totalVariacao = tipo.totalVariacao * dolar
-        }
-        return tipo
-    })
-
     // add TOTAL
     porTipo.push({
         _id: 'TOTAL',
