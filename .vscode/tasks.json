@@ -4,7 +4,7 @@
         {  
             "type": "shell",
             "label": "Script execute",
-            "command": "npx orki-core-script execute -f ${file}",
+            "command": "npx orki-core-script execute -d ./src/definitions -f ${file}",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -18,7 +18,7 @@
         {  
             "type": "shell",
             "label": "Script publish",
-            "command": "npx orki-core-script publish -f ${file}",
+            "command": "npx orki-core-script publish -d ./src/definitions -f ${file}",
             "group": {
                 "kind": "build",
                 "isDefault": true

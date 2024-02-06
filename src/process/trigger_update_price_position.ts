@@ -3,7 +3,7 @@ const Main: OrkiTrigger = {
         const code = input?.code
         const precoFechamento = input?.price
         // in percent
-        const variacaoFechamento = input?.variation
+        const variacaoFechamento = input?.variation || 0
         // calculado a partir do preco de fechamento e variacao
         const variacaoPrecoFechamento = (precoFechamento * variacaoFechamento) / 100
 
@@ -14,12 +14,16 @@ const Main: OrkiTrigger = {
             }
         }
 
-        const position = await utils.coll('position')
+        const position: OrkiViews.Position = await utils.coll('position')
             .findOne({
                 codigoNegociacao: code
             })
         
         if (!position) return
+
+        if (!position.quantidade) { 
+            throw utils.makeError('ERROR_POSITION_WITHOUT_QUANTITY', 'Position without quantity')
+        }
 
         let valorAtualizado = position.quantidade * precoFechamento
 
