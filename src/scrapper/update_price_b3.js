@@ -19,6 +19,7 @@ return async ({
         await utils.notify('price.updated', {
             code: quote_name,
             price: current_price,
+            variation
         })
 
         if (!stock) {

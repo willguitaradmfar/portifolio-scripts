@@ -3,7 +3,7 @@ const Main: OrkiTrigger = {
         const code = input?.code
         const precoFechamento = input?.price
         // in percent
-        const variacaoFechamento = input?.variation || 0
+        const variacaoFechamento = input?.variation
         // calculado a partir do preco de fechamento e variacao
         const variacaoPrecoFechamento = (precoFechamento * variacaoFechamento) / 100
 
