@@ -27,7 +27,7 @@ const Main: OrkiTrigger = {
 
         let valorAtualizado = position.quantidade * precoFechamento
 
-        const response = await utils.fetch(`https://economia.awesomeapi.com.br/USD-BRL/1?format=json`).then(res => res.json())
+        const response = await utils.fetch(`https://economia.awesomeapi.com.br/json/last/USD-BRL`).then(res => res.json())
         let dolar = 1
 
         if (response && response.length) {
