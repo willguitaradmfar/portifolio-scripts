@@ -7,6 +7,13 @@ permissions:
   canUpdate: true
   canDelete: true
 fields:
+  - name: identifier
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
   - name: createdAt
     select:
       isList: true

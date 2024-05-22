@@ -1,0 +1,110 @@
+name: llmbot_whitelabel
+model: llmbot_whitelabel
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+fields:
+  - name: avatar_type
+    select:
+      isList: true
+      isGet: true
+  - name: avatar_avatar_type
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_primary_color
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_bg_bot_message
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_bg_user_message
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_text_color_bot_message
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_text_color_user_message
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_text_color_header
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_border_radius
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_messages_input_bg
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_container_width
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_container_height
+    select:
+      isList: true
+      isGet: true
+  - name: custom_style_border_color
+    select:
+      isList: true
+      isGet: true
+  - name: welcome_messages_role
+    select:
+      isList: true
+      isGet: true
+  - name: welcome_messages_content
+    select:
+      isList: true
+      isGet: true
+  - name: quick_prompts
+    select:
+      isList: true
+      isGet: true
+  - name: is_public
+    select:
+      isList: true
+      isGet: true
+  - name: is_open_automatically
+    select:
+      isList: true
+      isGet: true
+  - name: is_show_welcome_msg_popup
+    select:
+      isList: true
+      isGet: true
+  - name: is_activated
+    select:
+      isList: true
+      isGet: true
+  - name: token
+    select:
+      isList: true
+      isGet: true
+  - name: llmbot
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - name
+      isList: true
+      isGet: true
+  - name: created_at
+    select:
+      isList: true
+      isGet: true
+  - name: updated_at
+    select:
+      isList: true
+      isGet: true
+    

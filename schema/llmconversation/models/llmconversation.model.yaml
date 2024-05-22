@@ -1,4 +1,4 @@
-name: llmbot
+name: llmconversation
 fields:
   - name: createdAt
     typeField: Date
@@ -13,34 +13,24 @@ fields:
       Date:
         defaultDateNowOnCreate: true
         defaultDateNowOnUpdate: true
-  - name: name
-    typeField: String
-    description: Nome do bot
+  - name: authentication
+    typeField: DynamicSelect
+    description: Autenticação
+    optionsType:
+      DynamicSelect:
+        model: authentication
+  - name: llmbot
+    typeField: DynamicSelect
+    description: Bot
     required: true
+    optionsType:
+      DynamicSelect:
+        model: llmbot
   - name: identifier
     typeField: String
     description: Identificador do bot
     required: true
     unique: true
-  - name: promptFact
-    typeField: String
-    description: Prompt Fact
   - name: isActive
     typeField: Boolean
     description: Ativo
-  - name: parameters
-    typeField: JSON
-    description: Parameters bot
-  - name: authentication
-    typeField: DynamicSelect
-    description: Parameters bot
-    optionsType:
-      DynamicSelect:
-        model: authentication
-  - name: scripts
-    typeField: DynamicSelect
-    description: Scripts bot
-    isArray: true
-    optionsType:
-      DynamicSelect:
-        model: code

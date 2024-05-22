@@ -1,0 +1,37 @@
+name: llmconversationmessage
+fields:
+  - name: createdAt
+    typeField: Date
+    description: Data de criação do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: conversation
+    typeField: DynamicSelect
+    description: Autenticação
+    optionsType:
+      DynamicSelect:
+        model: llmconversation
+  - name: name
+    typeField: String
+    description: Name
+  - name: role
+    typeField: StaticSelect
+    description: Role
+    required: true
+    optionsType:
+      StaticSelect:
+        optionsList:
+          - user
+          - assistant
+          - system
+          - function
+  - name: content
+    typeField: String
+    description: Name
+  - name: function_call
+    typeField: JSON
+    description: Function call
+  - name: detail
+    typeField: JSON
+    description: Detail

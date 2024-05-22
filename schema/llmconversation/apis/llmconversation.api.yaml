@@ -1,5 +1,5 @@
-name: llmbot
-model: llmbot
+name: llmconversation
+model: llmconversation
 permissions:
   canCreate: true
   canGet: true
@@ -15,29 +15,6 @@ fields:
     select:
       isList: true
       isGet: true
-  - name: name
-    select:
-      optionsType:
-        String:
-          hasSearch: true
-      isList: true
-      isGet: true
-  - name: identifier
-    select:
-      isList: true
-      isGet: true
-  - name: promptFact
-    select:
-      isList: true
-      isGet: true
-  - name: isActive
-    select:
-      isList: true
-      isGet: true
-  - name: parameters
-    select:
-      isList: true
-      isGet: true
   - name: authentication
     select:
       optionsType:
@@ -47,12 +24,20 @@ fields:
             - email
       isList: true
       isGet: true
-  - name: scripts
+  - name: llmbot
     select:
       optionsType:
         DynamicSelect:
           selectFields:
+            - identifier
             - name
-            - description
+      isList: true
+      isGet: true
+  - name: identifier
+    select:
+      isList: true
+      isGet: true
+  - name: isActive
+    select:
       isList: true
       isGet: true

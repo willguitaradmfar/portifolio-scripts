@@ -1,0 +1,103 @@
+name: llmbot_whitelabel
+fields:
+  - name: avatar_type
+    typeField: StaticSelect
+    description: Tipo de avatar
+    optionsType:
+      StaticSelect:
+        optionsList:
+          - svg
+  - name: avatar_avatar_type
+    typeField: StaticSelect
+    description: Tipo de avatar
+    optionsType:
+      StaticSelect:
+        optionsList:
+          - AVATAR_1
+          - AVATAR_2
+          - AVATAR_3
+  - name: custom_style_primary_color
+    typeField: String
+    description: Cor primária
+  - name: custom_style_bg_bot_message
+    typeField: String
+    description: Cor de fundo das mensagens do bot
+  - name: custom_style_bg_user_message
+    typeField: String
+    description: Cor de fundo das mensagens do usuário
+  - name: custom_style_text_color_bot_message
+    typeField: String
+    description: Cor do texto das mensagens do bot
+  - name: custom_style_text_color_user_message
+    typeField: String
+    description: Cor do texto das mensagens do usuário
+  - name: custom_style_text_color_header
+    typeField: String
+    description: Cor do texto do cabeçalho
+  - name: custom_style_border_radius
+    typeField: String
+    description: Raio da borda
+  - name: custom_style_messages_input_bg
+    typeField: String
+    description: Cor de fundo do input de mensagens
+  - name: custom_style_container_width
+    typeField: String
+    description: Largura do container
+  - name: custom_style_container_height
+    typeField: String
+    description: Altura do container
+  - name: custom_style_border_color
+    typeField: String
+    description: Cor da borda
+  - name: welcome_messages_role
+    typeField: StaticSelect
+    description: Papel
+    optionsType:
+      StaticSelect:
+        optionsList:
+          - assistant
+          - user
+  - name: welcome_messages_content
+    typeField: String
+    description: Conteúdo
+  - name: quick_prompts
+    typeField: JSON
+    description: Prompts rápidos
+  - name: is_public
+    typeField: Boolean
+    description: É público?
+  - name: is_open_automatically
+    typeField: Boolean
+    description: Abrir automaticamente?
+  - name: is_show_welcome_msg_popup
+    typeField: Boolean
+    description: Mostrar popup de mensagem de boas vindas?
+  - name: is_activated
+    typeField: Boolean
+    description: Está ativado?
+  - name: token
+    typeField: String
+    description: Token
+  - name: llmbot
+    typeField: DynamicSelect
+    description: LLM Bot
+    unique: true
+    optionsType:
+      DynamicSelect:
+        model: llmbot
+  - name: created_at
+    typeField: Date
+    description: Data de criação do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: updated_at
+    typeField: Date
+    description: Data de atualização do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+        defaultDateNowOnUpdate: true
+  - name: removed_at
+    typeField: Date
+    description: Data de remoção do registro

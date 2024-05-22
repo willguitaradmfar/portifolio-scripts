@@ -1,5 +1,10 @@
 name: llmfact
 fields:
+  - name: identifier
+    typeField: String
+    description: Identificador do registro
+    required: true
+    unique: true
   - name: createdAt
     typeField: Date
     description: Data de criação do registro

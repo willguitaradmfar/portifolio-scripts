@@ -1,0 +1,119 @@
+name: Mensagens
+api: llmconversationmessage
+identifier: llmconversationmessage
+defaultFieldView:
+  title: content
+fields:
+  - name: conversation
+    label: Conversa
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - identifier
+          - createdAt
+        api: llmconversation
+        view: llmconversation
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: name
+    label: Nome
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: role
+    label: Papel
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: content
+    label: Conteúdo
+    optionsType:
+      String:
+        component: textarea
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: function_call
+    label: Chamada de função
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: detail
+    label: Detalhes
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: createdAt
+    label: Criado em
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: 1
