@@ -40,7 +40,7 @@ const Main: OrkiLLM = {
 
         return {
             success: true,
-            data: data?.data?.results.map((result: any) => {
+            data: data?.results.map((result: any) => {
                 delete result.summaryProfile
 
                 return result
