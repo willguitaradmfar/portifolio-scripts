@@ -21,8 +21,8 @@ const Main: OrkiLLM = {
                         },
                         agrupamento_periodo: {
                             type: 'string',
-                            enum: ['hora', 'dia', 'semana', 'mes'],
-                            description: 'Agrupamento de periodo. Hora retorna a média por hora, dia por dia, semana por semana e mes por mes.'
+                            enum: ['dia', 'semana', 'mes'],
+                            description: 'Agrupamento de periodo. Hora retorna a média por dia por dia, semana por semana e mes por mes.'
                         } as any,
                     },
                     required: ['agrupamento_periodo', 'data_inicio', 'data_fim']
@@ -53,7 +53,6 @@ const Main: OrkiLLM = {
                         data: {
                             $switch: {
                                 branches: [
-                                    { case: { $eq: [agrupamento_periodo, 'hora'] }, then: { $dateToString: { format: '%Y-%m-%d %H', date: '$created_at' } } },
                                     { case: { $eq: [agrupamento_periodo, 'dia'] }, then: { $dateToString: { format: '%Y-%m-%d', date: '$created_at' } } },
                                     { case: { $eq: [agrupamento_periodo, 'semana'] }, then: { $dateToString: { format: '%Y-%U', date: '$created_at' } } },
                                     { case: { $eq: [agrupamento_periodo, 'mes'] }, then: { $dateToString: { format: '%Y-%m', date: '$created_at' } } },
