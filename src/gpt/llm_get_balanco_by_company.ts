@@ -23,7 +23,7 @@ const Main: OrkiLLM = {
 
         const codigoNegociacao = input.codigoNegociacao
 
-        const response = await utils.fetch(`${brapiHost}/api/quote/${codigoNegociacao}?modules=summaryProfile,financialData,incomeStatementHistory,defaultKeyStatistics&token=${brapiToken}`, {
+        const response = await utils.fetch(`${brapiHost}/api/quote/${codigoNegociacao}?modules=balanceSheetHistory,balanceSheetHistoryQuarterly,financialData,incomeStatementHistoryQuarterly,incomeStatementHistory,defaultKeyStatistics&fundamental=true&dividends=true&token=${brapiToken}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

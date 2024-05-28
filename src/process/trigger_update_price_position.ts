@@ -21,9 +21,7 @@ const Main: OrkiTrigger = {
         
         if (!position) return
 
-        if (!position.quantidade) { 
-            throw utils.makeError('ERROR_POSITION_WITHOUT_QUANTITY', 'Position without quantity')
-        }
+        position.quantidade = position.quantidade || 0
 
         let valorAtualizado = position.quantidade * precoFechamento
 
