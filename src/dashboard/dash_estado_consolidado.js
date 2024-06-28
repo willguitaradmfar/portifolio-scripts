@@ -43,6 +43,10 @@ return async ({
             name: 'precisaAlocar',
             label: 'Precisa alocar',
             typeField: 'Number',
+        }, {
+            name: 'variacaoFechamento',
+            label: 'Variação fechamento',
+            typeField: 'Number',
         }]
         return { fields }
     }
