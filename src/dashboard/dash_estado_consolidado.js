@@ -4,6 +4,7 @@ return async ({
 }) => {
     const is_metadata = utils.path(input, 'is_metadata')
     const pipeline = utils.path(input, 'pipeline', [])
+    const options = utils.path(input, 'options', {})
 
     if (is_metadata) {
         const fields = [{
@@ -47,6 +48,19 @@ return async ({
     }
 
     let aggregate = []
+
+    if (options.comQuantidade) {
+        aggregate.push({
+            $match: {
+                quantidade: {
+                    $gt: 0
+                },
+                variacaoValorAtualizado: {
+                    $nin: [null, 0]
+                }
+            }
+        })
+    }
 
     return {
         data: await utils

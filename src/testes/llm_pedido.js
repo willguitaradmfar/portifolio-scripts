@@ -3,36 +3,20 @@ return async ({
     input
 }) => {
 
-    const is_metadata = utils.path(input, 'is_metadata')
+    let rows = []
+    for (let i = 0; i < 1000000; i++) {
+        rows.push({
+            id: i,
+            data: i,
+            status: 'teste_' + i
+        })
+    }
 
-    if (is_metadata) {
-        return {
-            parameters: {
-                type: 'object',
-                properties: {
-                    customerName: {
-                        type: 'string',
-                        description: 'Nome do cliente'
-                    },
-                    product: {
-                        type: 'string',
-                        description: 'Nome do produto'                
-                    },
-                    address: {
-                        type: 'string',
-                        description: 'Endereço de entrega'
-                    },
-                    preferenceColor: {
-                        type: 'string',
-                        description: 'Cor preferida'
-                    },
-                },
-                required: ['customerName', 'product', 'address', 'preferenceColor']
-            }
-        }
-    }    
+    await utils.bigquery.insert('ltf_data_lake', 'llm_pedido', rows, {
+        projectId: 'learntofly-180002'
+    })
 
     return {
-        success: true,    
+        success: true,
     }
 }
