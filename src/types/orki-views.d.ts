@@ -892,6 +892,10 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       need_to_allocate?: number | null;
       /**
+      * Se é Dólar
+      */
+      is_dolar?: boolean | null;
+      /**
       * Data de criação do registro
       */
       created_at?: Date | null;
@@ -988,6 +992,10 @@ declare namespace OrkiSchemaTypes.Portifolio {
       * Percentual que Precisa Alocar
       */
       need_to_allocate?: number;
+      /**
+      * Se é Dólar
+      */
+      is_dolar?: boolean;
       /**
       * Data de criação do registro
       */

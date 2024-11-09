@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 import { Orki, OrkiInjectTypes, OrkiInterfaces, OrkiTest } from "orki-core-runtime";
-import { Consolidate, UpdateQuantity } from './usecases/interfaces';
+import { Consolidate } from './usecases/interfaces';
 
 @Orki()
 export class UpdatePrice implements OrkiInterfaces.TriggerRuntime {

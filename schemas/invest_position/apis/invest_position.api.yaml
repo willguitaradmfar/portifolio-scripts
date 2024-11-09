@@ -73,6 +73,10 @@ fields:
     select:
       isList: true
       isGet: true
+  - name: is_dolar
+    select:
+      isList: true
+      isGet: true
   - name: created_at
     select:
       isList: true

@@ -105,7 +105,7 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: false
+      listMode: true
       cloneMode: true
     order: 0
   - name: gross_value
@@ -141,7 +141,7 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: false
+      listMode: true
       cloneMode: true
     order: 0
   - name: applied_value
@@ -177,7 +177,7 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: true
+      listMode: false
       cloneMode: true
     order: 0
   - name: average_profit_variation
@@ -202,8 +202,8 @@ fields:
     label: Recomendação de Alocação
     optionsType:
       Number:
-        formatType: percentage
-        decimalPlaces: 0
+        formatType: number
+        decimalPlaces: 2
     layout:
       xs: "12"
       sm: "12"
@@ -213,15 +213,15 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: false
+      listMode: true
       cloneMode: true
     order: 0
   - name: allocated
     label: Percentual Alocado
     optionsType:
       Number:
-        formatType: percentage
-        decimalPlaces: 0
+        formatType: number
+        decimalPlaces: 2
     layout:
       xs: "12"
       sm: "12"
@@ -238,8 +238,25 @@ fields:
     label: Percentual que Precisa Alocar
     optionsType:
       Number:
-        formatType: percentage
-        decimalPlaces: 0
+        formatType: number
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: is_dolar
+    label: É Dólar
+    optionsType:
+      Boolean:
+        isSwitch: true
     layout:
       xs: "12"
       sm: "12"

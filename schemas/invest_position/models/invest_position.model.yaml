@@ -57,6 +57,10 @@ fields:
   - name: need_to_allocate
     description: Percentual que Precisa Alocar
     typeField: Number
+
+  - name: is_dolar
+    description: Se é Dólar
+    typeField: Boolean
   
   - name: created_at
     typeField: Date
