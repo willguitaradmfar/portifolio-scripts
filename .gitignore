@@ -5,3 +5,5 @@ docker-compose.yml
 data
 letsencrypt
 *.input.json
+
+*.zip

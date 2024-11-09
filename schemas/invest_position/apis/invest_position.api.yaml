@@ -1,0 +1,83 @@
+name: invest_position
+model: invest_position
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+  canExport: true
+fields:
+  - name: invest_wallet
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - code
+            - name
+            - authentication
+      isList: true
+      isGet: true
+  - name: code
+    select:
+      optionsType:
+        String:
+          hasSearch: true
+      isList: true
+      isGet: true
+  - name: quantity
+    select:
+      isList: true
+      isGet: true
+  - name: variation_closing_price
+    select:
+      isList: true
+      isGet: true
+  - name: closing_price
+    select:
+      isList: true
+      isGet: true
+  - name: average_closing_price
+    select:
+      isList: true
+      isGet: true
+  - name: gross_value
+    select:
+      isList: true
+      isGet: true
+  - name: net_value
+    select:
+      isList: true
+      isGet: true
+  - name: applied_value
+    select:
+      isList: true
+      isGet: true
+  - name: average_profit
+    select:
+      isList: true
+      isGet: true
+  - name: average_profit_variation
+    select:
+      isList: true
+      isGet: true
+  - name: recommendation_allocation
+    select:
+      isList: true
+      isGet: true
+  - name: allocated
+    select:
+      isList: true
+      isGet: true
+  - name: need_to_allocate
+    select:
+      isList: true
+      isGet: true
+  - name: created_at
+    select:
+      isList: true
+      isGet: true
+  - name: updated_at
+    select:
+      isList: true
+      isGet: true

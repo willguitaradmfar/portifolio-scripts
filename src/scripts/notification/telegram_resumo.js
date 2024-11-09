@@ -50,10 +50,8 @@ return async ({
         const percent = tipo.totalVariacao / tipo.total
 
         const text = `
-${tipo._id}: 
-${percent.toLocaleString('pt-br', { style: 'percent', minimumFractionDigits: 2 })} (${tipo.totalVariacao.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })})
-${tipo.total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}.
-`
+${percent.toLocaleString('pt-br', { style: 'percent', minimumFractionDigits: 2 })}: ${tipo._id}`
+        
         message += text
 
         await utils.coll('position_history').create({
@@ -63,6 +61,20 @@ ${tipo.total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}.
             variacaoValorAtualizado: tipo.totalVariacao,
             created_at: dateNow
         })
+    }
+
+    message += `
+=================`
+
+    for (const tipo of porTipo.sort((a, b) => a._id.localeCompare(b._id))) {
+        const percent = tipo.totalVariacao / tipo.total
+
+        const text = `
+${tipo._id}: 
+${tipo.totalVariacao.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+${tipo.total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}.
+`
+        message += text
     }
 
     const telegram_token = await utils.param('TELEGRAM_TOKEN')

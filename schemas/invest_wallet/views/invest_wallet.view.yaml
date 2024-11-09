@@ -1,0 +1,98 @@
+name: My Wallet
+api: invest_wallet
+identifier: invest_wallet
+defaultFieldView:
+  title: code
+fields:
+  - name: authentication
+    label: Usuário
+    optionsType:
+      DynamicSelect:
+        diplayFields:
+          - email
+          - name
+        api: authentication
+        view: authentication
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0  
+  - name: code
+    label: Código da carteira
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: name
+    label: Nome da carteira
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: created_at
+    label: Data de criação do registro
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: 0
+  - name: updated_at
+    label: Data de atualização do registro
+    optionsType:
+      Date:
+        dateFormat: DD/MM/YYYY
+        timeFormat: HH:mm
+        isTimeAgo: true
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: false
+      addMode: false
+      listMode: true
+      cloneMode: false
+    order: -1
+relationships:
+  - fields:
+      - invest_wallet
+    name: Ativos
+    view: invest_position

@@ -1,14 +1,17 @@
 {
-  "name": "portifolio-scripts",
+  "name": "portifolio",
   "version": "1.0.0",
   "description": "## criado a partir do ORKI",
   "main": "ACTION_IMPORT_NEGOCIACAO_PORTAL_DO_INVESTIDOR.js",
   "scripts": {
-    "publish": "npx orki-core-script publish -f",
+    "publish": "npm run build && npx orki-core-runtime --cmd publish -d dist",
     "run": "npx orki-core-script execute -f",
     "ts:generate": "npx orki-core-view generate -d ./src/definitions",
     "ts:validate": "npx tsc  --noEmit",
-    "ts:docs": "npx typedoc --plugin typedoc-plugin-markdown --out docs src/definitions/*.ts"
+    "ts:docs": "npx typedoc --plugin typedoc-plugin-markdown --out docs src/definitions/*.ts",
+    "build": "rm -Rf dist && tsc -b && cp -R schemas dist",
+    "execute": "tsc -b && npx orki-core-runtime --cmd run -d dist",
+    "generate": "npx orki-core-runtime --cmd generate -t src/types"
   },
   "repository": {
     "type": "git",
@@ -21,8 +24,10 @@
   },
   "homepage": "https://github.com/seal-devmania/scripts#readme",
   "dependencies": {
+    "axios": "^1.7.7",
     "eventsource": "^2.0.2",
     "node-fetch": "^3.3.1",
+    "orki-core-runtime": "^1.0.80",
     "orki-core-script": "^0.0.58",
     "orki-core-view": "^0.0.55",
     "typedoc": "^0.25.7",

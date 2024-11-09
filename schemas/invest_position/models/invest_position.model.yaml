@@ -1,0 +1,73 @@
+name: invest_position
+fields:
+  - name: invest_wallet
+    typeField: DynamicSelect
+    description: Carteira de Investimento
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: invest_wallet
+  - name: code
+    description: Código de Negociação
+    typeField: String
+    required: true
+  - name: quantity
+    description: Quantidade
+    typeField: Number
+    required: true
+  - name: variation_closing_price
+    description: Variação de Preço de Fechamento
+    typeField: Number
+  - name: closing_price
+    description: Preço de Fechamento
+    typeField: Number
+  - name: average_closing_price
+    description: Preço Médio de Fechamento
+    typeField: Number
+    # Valor bruto da posição
+  - name: gross_value
+    description: Valor Bruto (closing_price * quantity)
+    typeField: Number
+    # Valor líquido da posição
+  - name: net_value
+    description: Valor Líquido (gross_value - applied_value)
+    typeField: Number
+    # Valor aplicado na posição
+  - name: applied_value
+    description: Valor Aplicado (average_closing_price * quantity)
+    typeField: Number
+    # Lucro médio da posição
+  - name: average_profit
+    description: Lucro Médio (average_closing_price - closing_price)
+    typeField: Number
+    # Lucro médio da posição em porcentagem
+  - name: average_profit_variation
+    description: Variação do Lucro Médio (average_profit / closing_price)
+    typeField: Number
+
+  # Porcentagem de recomendação de alocação
+  - name: recommendation_allocation
+    description: Porcentagem de Recomendação de Alocação
+    typeField: Number
+  # Percentual alocado
+  - name: allocated
+    description: Percentual Alocado
+    typeField: Number
+  # Percentual que precisa alocar
+  - name: need_to_allocate
+    description: Percentual que Precisa Alocar
+    typeField: Number
+  
+  - name: created_at
+    typeField: Date
+    description: Data de criação do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: updated_at
+    typeField: Date
+    description: Data de atualização do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+        defaultDateNowOnUpdate: true
