@@ -930,6 +930,64 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       updated_at?: Date | null;
   }
+  /**
+   * Module: Portifolio
+   */
+  type InvestPositionHistoryInput = {
+      _id?: string;
+      /**
+      * Carteira de Investimento
+      */
+      invest_wallet: string;
+      /**
+      * Valor Bruto
+      */
+      gross_value: number;
+      /**
+      * Variação do Valor Bruto
+      */
+      gross_value_variation?: number | null;
+      /**
+      * Variação do Valor Bruto no dia
+      */
+      gross_value_variation_day?: number | null;
+      /**
+      * Variação do Valor Bruto na semana
+      */
+      gross_value_variation_week?: number | null;
+      /**
+      * Variação do Valor Bruto no mês
+      */
+      gross_value_variation_month?: number | null;
+      /**
+      * Valor Líquido
+      */
+      net_value: number;
+      /**
+      * Variação do Valor Líquido
+      */
+      net_value_variation?: number | null;
+      /**
+      * Variação do Valor Líquido no dia
+      */
+      net_value_variation_day?: number | null;
+      /**
+      * Variação do Valor Líquido na semana
+      */
+      net_value_variation_week?: number | null;
+      /**
+      * Variação do Valor Líquido no mês
+      */
+      net_value_variation_month?: number | null;
+      /**
+      * Data de criação do registro
+      */
+      created_at?: Date | null;
+      /**
+      * Data de atualização do registro
+      */
+      updated_at?: Date | null;
+  }
 
   /**
    * Module: Portifolio
@@ -1022,6 +1080,64 @@ declare namespace OrkiSchemaTypes.Portifolio {
       * Nome
       */
       name: string;
+      /**
+      * Data de criação do registro
+      */
+      created_at?: Date;
+      /**
+      * Data de atualização do registro
+      */
+      updated_at?: Date;
+  }
+  /**
+   * Module: Portifolio
+   */
+  type InvestPositionHistory = {
+      _id: string;
+      /**
+      * Carteira de Investimento
+      */
+      invest_wallet: OrkiSchemaTypes.Portifolio.InvestWallet;
+      /**
+      * Valor Bruto
+      */
+      gross_value: number;
+      /**
+      * Variação do Valor Bruto
+      */
+      gross_value_variation?: number;
+      /**
+      * Variação do Valor Bruto no dia
+      */
+      gross_value_variation_day?: number;
+      /**
+      * Variação do Valor Bruto na semana
+      */
+      gross_value_variation_week?: number;
+      /**
+      * Variação do Valor Bruto no mês
+      */
+      gross_value_variation_month?: number;
+      /**
+      * Valor Líquido
+      */
+      net_value: number;
+      /**
+      * Variação do Valor Líquido
+      */
+      net_value_variation?: number;
+      /**
+      * Variação do Valor Líquido no dia
+      */
+      net_value_variation_day?: number;
+      /**
+      * Variação do Valor Líquido na semana
+      */
+      net_value_variation_week?: number;
+      /**
+      * Variação do Valor Líquido no mês
+      */
+      net_value_variation_month?: number;
       /**
       * Data de criação do registro
       */

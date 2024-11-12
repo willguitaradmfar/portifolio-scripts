@@ -96,3 +96,7 @@ relationships:
       - invest_wallet
     name: Ativos
     view: invest_position
+  - fields:
+      - invest_wallet
+    name: Histórico
+    view: invest_position_history

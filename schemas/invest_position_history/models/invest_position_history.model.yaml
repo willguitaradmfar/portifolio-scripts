@@ -1,0 +1,65 @@
+name: invest_position_history
+fields:
+  - name: invest_wallet
+    typeField: DynamicSelect
+    description: Carteira de Investimento
+    required: true
+    optionsType:
+      DynamicSelect:
+        model: invest_wallet
+
+  - name: gross_value
+    required: true
+    description: Valor Bruto
+    typeField: Number
+
+  - name: gross_value_variation
+    description: Variação do Valor Bruto
+    typeField: Number
+
+  - name: gross_value_variation_day
+    description: Variação do Valor Bruto no dia
+    typeField: Number
+  
+  - name: gross_value_variation_week
+    description: Variação do Valor Bruto na semana
+    typeField: Number
+
+  - name: gross_value_variation_month
+    description: Variação do Valor Bruto no mês
+    typeField: Number
+
+  - name: net_value
+    required: true
+    description: Valor Líquido
+    typeField: Number
+
+  - name: net_value_variation
+    description: Variação do Valor Líquido
+    typeField: Number
+
+  - name: net_value_variation_day
+    description: Variação do Valor Líquido no dia
+    typeField: Number
+
+  - name: net_value_variation_week
+    description: Variação do Valor Líquido na semana
+    typeField: Number
+
+  - name: net_value_variation_month
+    description: Variação do Valor Líquido no mês
+    typeField: Number
+  
+  - name: created_at
+    typeField: Date
+    description: Data de criação do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+  - name: updated_at
+    typeField: Date
+    description: Data de atualização do registro
+    optionsType:
+      Date:
+        defaultDateNowOnCreate: true
+        defaultDateNowOnUpdate: true

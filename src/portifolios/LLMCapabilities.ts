@@ -1,5 +1,5 @@
 import { Orki, OrkiInjectTypes, OrkiLLM, OrkiTest } from "orki-core-runtime";
-import { InsertStock, UpdateAverageClosingPrice, UpdateQuantity, UpdateRecommendationAllocation } from "./usecases/interfaces";
+import { InsertStock, Summarize, UpdateAverageClosingPrice, UpdateQuantity, UpdateRecommendationAllocation } from "./usecases/interfaces";
 import mongoose from "mongoose";
 
 @Orki()
@@ -10,7 +10,8 @@ export class LLMCapabilities {
         private portifolio$UpdateQuantity: UpdateQuantity,
         private portifolio$UpdateAverageClosingPrice: UpdateAverageClosingPrice,
         private portifolio$InsertStock: InsertStock,
-        private portifolio$UpdateRecommendationAllocation: UpdateRecommendationAllocation
+        private portifolio$UpdateRecommendationAllocation: UpdateRecommendationAllocation,
+        private portifolio$Summarize: Summarize
     ) { }
 
     @OrkiLLM({
@@ -130,7 +131,7 @@ export class LLMCapabilities {
     async listMyInvestments({ code }: { code: string }) {
         const authentication = await this.context.get("authentication")
 
-        const invest_wallets: Array<OrkiSchemaTypes.Portifolio.InvestWallet>  = await this.database
+        const invest_wallets: Array<OrkiSchemaTypes.Portifolio.InvestWallet> = await this.database
             .getCollection("invest_wallet")
             .find({
                 authentication
@@ -159,58 +160,7 @@ export class LLMCapabilities {
             additionalProperties: false,
         }
     })
-    @OrkiTest()
     async summarizeByWallet() {
-        const authentication = await this.context.get("authentication")
-
-        const summary = await this.database
-            .getCollection("invest_position")
-            .aggregate([
-                {
-                    $lookup: {
-                        from: "invest_wallet",
-                        localField: "invest_wallet",
-                        foreignField: "_id",
-                        as: "wallet"
-                    }
-                },
-                { $unwind: "$wallet" },
-                {
-                    $match: {
-                        "wallet.authentication": new mongoose.Types.ObjectId(authentication._id)
-                    }
-                },
-                {
-                    $facet: {
-                        by_wallet: [{
-                            $group: {
-                                _id: "$invest_wallet",
-                                wallet: { $first: "$wallet" },
-                                total_gross: {
-                                    $sum: "$gross_value"
-                                }
-                            }
-                        },
-                        {
-                            $project: {
-                                _id: 0,
-                                wallet_code: "$wallet.code",
-                                wallet_name: "$wallet.name",
-                                total_gross: 1
-                            }
-                            }],
-                        total: [{
-                            $group: {
-                                _id: null,
-                                total_gross: {
-                                    $sum: "$gross_value"
-                                }
-                            }
-                        }]
-                    }
-                }
-            ])
-
-        return summary
+        return this.portifolio$Summarize.execute()
     }
 }

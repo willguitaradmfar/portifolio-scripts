@@ -17,3 +17,28 @@ export interface Consolidate {
 export interface UpdateRecommendationAllocation {
     execute({ code, recommendation_allocation }: { code: string, recommendation_allocation: number }): Promise<any>
 }
+
+export type SummarizeOutput = {
+    by_wallet: Array<{
+        wallet_id: string
+        wallet_code: string
+        wallet_name: string
+        total_gross: number,
+        total_net: number,
+        invest_position_history: OrkiSchemaTypes.Portifolio.InvestPositionHistoryInput
+    }>,
+    total: Array<{
+        total_gross: number,
+        total_net: number
+    }>
+}
+
+export type SummarizeInput = {
+    authentication?: {
+        _id: string
+    }
+}
+
+export interface Summarize {
+    execute(summarizeInput?: SummarizeInput): Promise<SummarizeOutput>
+}

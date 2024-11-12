@@ -1,0 +1,68 @@
+name: invest_position_history
+model: invest_position_history
+permissions:
+  canCreate: true
+  canGet: true
+  canList: true
+  canUpdate: true
+  canDelete: true
+  canExport: true
+fields:
+  - name: invest_wallet
+    select:
+      optionsType:
+        DynamicSelect:
+          selectFields:
+            - code
+            - name
+            - authentication
+      isList: true
+      isGet: true
+  - name: gross_value
+    select:
+      isList: true
+      isGet: true
+  - name: gross_value_variation
+    select:
+      isList: true
+      isGet: true
+  - name: gross_value_variation_day
+    select:
+      isList: true
+      isGet: true
+  - name: gross_value_variation_week
+    select:
+      isList: true
+      isGet: true
+  - name: gross_value_variation_month
+    select:
+      isList: true
+      isGet: true
+  - name: net_value
+    select:
+      isList: true
+      isGet: true
+  - name: net_value_variation
+    select:
+      isList: true
+      isGet: true  
+  - name: net_value_variation_day
+    select:
+      isList: true
+      isGet: true
+  - name: net_value_variation_week
+    select:
+      isList: true
+      isGet: true
+  - name: net_value_variation_month
+    select:
+      isList: true
+      isGet: true
+  - name: created_at
+    select:
+      isList: true
+      isGet: true
+  - name: updated_at
+    select:
+      isList: true
+      isGet: true
