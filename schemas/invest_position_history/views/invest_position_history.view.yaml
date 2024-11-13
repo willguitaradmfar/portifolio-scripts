@@ -39,10 +39,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: gross_value_variation
     label: Variação do Valor Bruto
@@ -57,10 +57,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: gross_value_variation_day
     label: Variação do Valor Bruto no dia
@@ -75,10 +75,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: gross_value_variation_week
     label: Variação do Valor Bruto na semana
@@ -93,10 +93,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: gross_value_variation_month
     label: Variação do Valor Bruto no mês
@@ -111,10 +111,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: net_value
     label: Valor Líquido
@@ -129,10 +129,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: net_value_variation
     label: Variação do Valor Líquido
@@ -147,10 +147,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: net_value_variation_day
     label: Variação do Valor Líquido no dia
@@ -165,10 +165,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: net_value_variation_week
     label: Variação do Valor Líquido na semana
@@ -183,10 +183,10 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
   - name: net_value_variation_month
     label: Variação do Valor Líquido no mês
@@ -201,30 +201,11 @@ fields:
       lg: "12"
       xl: "12"
     visible:
-      editMode: false
-      addMode: false
+      editMode: true
+      addMode: true
       listMode: true
-      cloneMode: false
+      cloneMode: true
     order: 0
-  - name: updated_at
-    label: Data de atualização do registro
-    optionsType:
-      Date:
-        dateFormat: DD/MM/YYYY
-        timeFormat: HH:mm
-        isTimeAgo: true
-    layout:
-      xs: "12"
-      sm: "12"
-      md: "12"
-      lg: "12"
-      xl: "12"
-    visible:
-      editMode: false
-      addMode: false
-      listMode: true
-      cloneMode: false
-    order: -1
   - name: created_at
     label: Data de criação do registro
     optionsType:
@@ -243,4 +224,4 @@ fields:
       addMode: false
       listMode: true
       cloneMode: false
-    order: 0
+    order: -1

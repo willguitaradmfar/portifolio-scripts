@@ -13,6 +13,21 @@ export class SummarizePortifolio implements Summarize {
 
 
     @OrkiTest()
+    async test() {
+        const authentications = await this.database
+            .getCollection('authentication')
+            .find()
+
+        for (const authentication of authentications) {
+            await this.execute({
+                authentication: {
+                    _id: authentication._id.toString()
+                }
+            })
+        }
+    }
+
+    @OrkiTest()
     async execute(summarizeInput?: SummarizeInput): Promise<SummarizeOutput> {
         const authentication = summarizeInput?.authentication || await this.context.get("authentication")
 
@@ -69,7 +84,7 @@ export class SummarizePortifolio implements Summarize {
                                 from: "invest_position_history",
                                 localField: "wallet_id",
                                 foreignField: "invest_wallet",
-                                as: "invest_position_histories",
+                                as: "invest_position_history",
                                 pipeline: [{
                                     $sort: { created_at: -1 }
                                 }, {
@@ -82,7 +97,10 @@ export class SummarizePortifolio implements Summarize {
                                 }]
                             }
                         }, {
-                            $unwind: "$invest_position_history"
+                            $unwind: {
+                                path: "$invest_position_history",
+                                preserveNullAndEmptyArrays: true
+                            }
                         }],
                         total: [{
                             $group: {

@@ -13,7 +13,7 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
         private database: OrkiInjectTypes.Database
     ) { }
 
-    private async registerSnapshot(investPositionHistoryInput: OrkiSchemaTypes.Portifolio.InvestPositionHistoryInput) {
+    private async registerSnapshot(investPositionHistoryInput: OrkiSchemaTypes.Portifolio.InvestPositionHistoryInput): Promise<OrkiSchemaTypes.Portifolio.InvestPositionHistoryInput> {
         const lastSnapshot = await this.database
             .getCollection<OrkiSchemaTypes.Portifolio.InvestPositionHistoryInput>('invest_position_history')
             .findOne({
@@ -53,38 +53,38 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
 
         if (lastSnapshot) {
             investPositionHistoryInput.gross_value_variation = 
-                lastSnapshot.gross_value - investPositionHistoryInput.gross_value
+                investPositionHistoryInput.gross_value - lastSnapshot.gross_value
 
             investPositionHistoryInput.net_value_variation =
-                lastSnapshot.net_value - investPositionHistoryInput.net_value
+                investPositionHistoryInput.net_value - lastSnapshot.net_value
         }
 
         if(firstSnapshotDay) {
             investPositionHistoryInput.gross_value_variation_day = 
-                firstSnapshotDay.gross_value - investPositionHistoryInput.gross_value
+                investPositionHistoryInput.gross_value - firstSnapshotDay.gross_value
 
             investPositionHistoryInput.net_value_variation_day =
-                firstSnapshotDay.net_value - investPositionHistoryInput.net_value
+                investPositionHistoryInput.net_value - firstSnapshotDay.net_value
         }
 
         if(firstSnapshotWeek) {
             investPositionHistoryInput.gross_value_variation_week = 
-                firstSnapshotWeek.gross_value - investPositionHistoryInput.gross_value
+                investPositionHistoryInput.gross_value - firstSnapshotWeek.gross_value
 
             investPositionHistoryInput.net_value_variation_week =
-                firstSnapshotWeek.net_value - investPositionHistoryInput.net_value
+                investPositionHistoryInput.net_value - firstSnapshotWeek.net_value
         }
 
         if(firstSnapshotMonth) {
             investPositionHistoryInput.gross_value_variation_month = 
-                firstSnapshotMonth.gross_value - investPositionHistoryInput.gross_value
+                investPositionHistoryInput.gross_value - firstSnapshotMonth.gross_value
 
             investPositionHistoryInput.net_value_variation_month =
-                firstSnapshotMonth.net_value - investPositionHistoryInput.net_value
+                investPositionHistoryInput.net_value - firstSnapshotMonth.net_value
         }
         
         return await this.database
-            .getCollection('invest_position_history')
+            .getCollection<OrkiSchemaTypes.Portifolio.InvestPositionHistoryInput>('invest_position_history')
             .create(investPositionHistoryInput)
     }
 
@@ -111,40 +111,48 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
             .getCollection('authentication')
             .find()
 
+        const results = [] as any[]
+
         for (const authentication of authentications) {
 
-            const summary = await this.portifolio$Summarize
+            const summaries = await this.portifolio$Summarize
                 .execute({
                     authentication: {
                         _id: authentication._id.toString(),
                     }
                 })
 
-            if (!summary?.by_wallet?.length) {
-                return {
-                    message: 'Sem resumo'
-                }
-            }
+            if (!summaries?.by_wallet?.length) {
+                results.push({
+                    message: `Nenhum resultado para ${authentication._id}`
+                })
+                continue
+            }            
 
             let message = ''
 
-            for (const tipo of summary.by_wallet?.sort((a, b) => a.wallet_code.localeCompare(b.wallet_code))) {
+            for (const summary of summaries.by_wallet?.sort((a, b) => a.wallet_code.localeCompare(b.wallet_code))) {
+
+                const newSummary = await this.registerSnapshot({
+                    invest_wallet: summary.wallet_id,
+                    created_at: new Date(),
+                    updated_at: new Date(),
+                    gross_value: summary.total_gross,
+                    net_value: summary.total_net
+                })
 
                 const text = `
-${tipo.wallet_name}:
-Dia: ${tipo.invest_position_history.gross_value_variation_day?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-Sem: ${tipo.invest_position_history.gross_value_variation_week?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-Mês: ${tipo.invest_position_history.gross_value_variation_month?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-${tipo.total_gross.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}.
+${summary.wallet_name}:
+Dia: ${newSummary.gross_value_variation_day?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+Sem: ${newSummary.gross_value_variation_week?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+Mês: ${newSummary.gross_value_variation_month?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+Lucro: ${newSummary.net_value?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+${newSummary.gross_value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}.
 `
                 message += text
 
-                await this.registerSnapshot({
-                    invest_wallet: tipo.wallet_id,
-                    created_at: new Date(),
-                    updated_at: new Date(),
-                    gross_value: tipo.total_gross,
-                    net_value: tipo.total_net
+                results.push({
+                    tipo: newSummary
                 })
             }
 
@@ -152,7 +160,7 @@ ${tipo.total_gross.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' 
 =================`
 
             message += `
-Total: ${summary?.total[0]?.total_gross?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}.
+Total: ${summaries?.total[0]?.total_gross?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}.
 `
 
             const telegram_token = await this.parameter.get('TELEGRAM_TOKEN')
@@ -164,5 +172,7 @@ Total: ${summary?.total[0]?.total_gross?.toLocaleString('pt-br', { style: 'curre
                 disable_notification: true
             })
         }
+
+        return results
     }
 }

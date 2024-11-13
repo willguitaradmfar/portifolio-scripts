@@ -1,6 +1,5 @@
-import { Orki, OrkiInjectTypes, OrkiLLM, OrkiTest } from "orki-core-runtime";
+import { Orki, OrkiInjectTypes, OrkiLLM } from "orki-core-runtime";
 import { InsertStock, Summarize, UpdateAverageClosingPrice, UpdateQuantity, UpdateRecommendationAllocation } from "./usecases/interfaces";
-import mongoose from "mongoose";
 
 @Orki()
 export class LLMCapabilities {
