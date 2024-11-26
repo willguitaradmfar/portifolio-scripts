@@ -1,22 +1,47 @@
-return async ({
-    utils,
-    input
-}) => {
+return async ({ utils, input }) => {
+    const session = await utils.database.getSession();
 
-    let rows = []
-    for (let i = 0; i < 1000000; i++) {
-        rows.push({
-            id: i,
-            data: i,
-            status: 'teste_' + i
-        })
-    }
+    try {
 
-    await utils.bigquery.insert('ltf_data_lake', 'llm_pedido', rows, {
-        projectId: 'learntofly-180002'
-    })
+        for (let i = 0; i < 100; i++) {
+            const tset = await utils.coll('menu')
+                .find({ isVisible: true })
+                .limit(20)
 
-    return {
-        success: true,
-    }
-}
+            await utils.api('menu').create({
+                name: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                path: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                icon: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                folder: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                isVisible: true
+            }, { session });
+
+            // Prepare bulk updates
+            const bulkUpdates = tset.map(item => ({
+                updateOne: {
+                    filter: { _id: item._id },
+                    update: {
+                        $set: {
+                            name: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                            path: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                            icon: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                            folder: Math.random().toString(36).substring(7) + ' - ' + i + ' - ' + Math.random().toString(36).substring(7),
+                            isVisible: true
+                        }
+                    }
+                }
+            }));
+
+            // Execute bulk write
+            if (bulkUpdates.length > 0) {
+                await utils.coll('menu').bulkWrite(bulkUpdates, { session });
+            }
+        }
+
+    } catch (error) {
+        console.error(error);
+        return { success: false, error: error.message };
+    } 
+
+    return { success: true };
+};
