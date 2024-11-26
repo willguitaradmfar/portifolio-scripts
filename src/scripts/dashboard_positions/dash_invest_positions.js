@@ -65,7 +65,7 @@ return async ({
             _id: 1,
             code: 1,
             invest_wallet: '$invest_wallet.name',
-            created_at: 1,
+            created_at: '$updated_at',
             gross_value: 1,
             net_value: 1,
             need_to_allocate: 1,

@@ -100,9 +100,9 @@ return async ({
             invest_wallet: '$_id.invest_wallet',
             created_at: 1,
             valores: [
-                { type: "Dia", valor: "$gross_value_variation_day" },
-                { type: "Semana", valor: "$gross_value_variation_week" },
-                { type: "Mês", valor: "$gross_value_variation_month" }
+                { type: "1. Dia", valor: "$gross_value_variation_day" },
+                { type: "2. Semana", valor: "$gross_value_variation_week" },
+                { type: "3. Mês", valor: "$gross_value_variation_month" }
             ]
         }
     })
@@ -133,6 +133,12 @@ return async ({
             type: '$_id.type',
             valor: 1,
             created_at: 1
+        }
+    })
+
+    aggregate.push({
+        $sort: {
+            type: 1
         }
     })
 
