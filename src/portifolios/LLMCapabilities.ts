@@ -14,103 +14,147 @@ export class LLMCapabilities {
     ) { }
 
     @OrkiLLM({
-        description: "Update quantity by code",
+        description: "Update multiple quantities by codes",
         parameters: {
             type: "object",
             properties: {
-                code: {
-                    type: "string",
-                    description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
-                },
-                quantity: {
-                    type: "number",
-                    description: "Quantity to update",
-                },
+                list: {
+                    description: "List of investments to update",
+                    type: "array",
+                    items: {
+                        type: "object",
+                        properties: {
+                            code: {
+                                type: "string",
+                                description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
+                            },
+                            quantity: {
+                                type: "number",
+                                description: "Quantity to update",
+                            },
+                        },
+                        required: ["code", "quantity"],
+                        additionalProperties: false,
+                    }
+                }
             },
-            required: ["code", "quantity"],
+            required: ["list"],
             additionalProperties: false,
         }
     })
-    async updateQuantityByCode({ code, quantity }: { code: string, quantity: number }) {
+    async updateQuantitiesByCodes(input: { list: Array<{ code: string, quantity: number }> }) {
         return this.portifolio$UpdateQuantity
-            .execute({ code, quantity })
+            .execute(input.list)
     }
 
     @OrkiLLM({
-        description: "Update average_closing_price by code",
+        description: "Update multiples average_closing_price by codes",
         parameters: {
             type: "object",
             properties: {
-                code: {
-                    type: "string",
-                    description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
-                },
-                average_closing_price: {
-                    type: "number",
-                    description: "Average closing price to update",
-                },
+                list: {
+                    description: "List of investments to update",
+                    type: "array",
+                    items: {
+                        type: "object",
+                        properties: {
+                            code: {
+                                type: "string",
+                                description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
+                            },
+                            average_closing_price: {
+                                type: "number",
+                                description: "Average closing price to update",
+                            },
+                        },
+                        required: ["code", "average_closing_price"],
+                        additionalProperties: false,
+                    }
+                }
             },
-            required: ["code", "average_closing_price"],
+            required: ["list"],
             additionalProperties: false,
         }
     })
-    async updateAverageClosingPriceByCode({ code, average_closing_price }: { code: string, average_closing_price: number }) {
+    async updateAvgClosEPricesByCodes(input: { list: Array<{ code: string, average_closing_price: number }> }) {
         return this.portifolio$UpdateAverageClosingPrice
-            .execute({ code, average_closing_price })
+            .execute(input.list)
     }
 
     @OrkiLLM({
-        description: "Update recommendation allocation by code",
+        description: "Update multiples recommendations allocations by codes",
         parameters: {
             type: "object",
             properties: {
-                code: {
-                    type: "string",
-                    description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
-                },
-                recommendation_allocation: {
-                    type: "number",
-                    description: "Recommendation allocation to update",
-                },
+                list: {
+                    description: "List of investments to update",
+                    type: "array",
+                    items: {
+                        type: "object",
+                        properties: {
+                            code: {
+                                type: "string",
+                                description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
+                            },
+                            recommendation_allocation: {
+                                type: "number",
+                                description: "Recommendation allocation to update",
+                            },
+                        },
+                        required: ["code", "recommendation_allocation"],
+                        additionalProperties: false,
+                    }
+                }
             },
-            required: ["code", "recommendation_allocation"],
+            required: ["list"],
             additionalProperties: false,
         }
     })
-    async updateRecommAllocByCode({ code, recommendation_allocation }: { code: string, recommendation_allocation: number }) {
+    async updateRecommAllocsByCodes(input: { list: Array<{ code: string, recommendation_allocation: number }> }) {
         return this.portifolio$UpdateRecommendationAllocation
-            .execute({ code, recommendation_allocation })
+            .execute(input.list)
     }
 
     @OrkiLLM({
-        description: "Insert stock",
+        description: "Insert multiples stocks",
         parameters: {
             type: "object",
             properties: {
-                code: {
-                    type: "string",
-                    description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
-                },
-                quantity: {
-                    type: "number",
-                    description: "Quantity to insert",
-                },
-                average_closing_price: {
-                    type: "number",
-                    description: "Average closing price to insert",
-                },
-                wallet_code: {
-                    type: "string",
-                    description: "Wallet code. Example: 'wallet1', 'wallet2', 'wallet3'",
-                },
+                list: {
+                    description: "List of stocks to insert",
+                    type: "array",
+                    items: {
+                        type: "object",
+                        properties: {
+                            code: {
+                                type: "string",
+                                description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
+                            },
+                            quantity: {
+                                type: "number",
+                                description: "Quantity to insert",
+                            },
+                            average_closing_price: {
+                                type: "number",
+                                description: "Average closing price to insert",
+                            },
+                            wallet_code: {
+                                type: "string",
+                                description: "Wallet code. Example: 'wallet1', 'wallet2', 'wallet3'",
+                            },
+                        },
+                        required: ["code", "quantity"],
+                        additionalProperties: false,
+                    }
+                }
             },
-            required: ["code", "quantity"],
+            required: ["list"],
             additionalProperties: false,
         }
     })
-    async insertStock({ code, quantity, average_closing_price, wallet_code }: { code: string, quantity: number, average_closing_price: number, wallet_code: string }) {
+    async insertStocks(input: { list: Array<{ code: string, quantity: number, average_closing_price: number, wallet_code: string }> }) {
         return this.portifolio$InsertStock
-            .execute({ code, quantity, average_closing_price, wallet_code })
+            .execute(input.list)
     }
 
     @OrkiLLM({
@@ -118,16 +162,19 @@ export class LLMCapabilities {
         parameters: {
             type: "object",
             properties: {
-                code: {
-                    type: "string",
-                    description: "Investment code. Example: 'AAPL', 'GOOGL', 'TSLA'",
+                codes: {
+                    type: "array",
+                    items: {
+                        type: "string",
+                    },
+                    description: "List of investment codes. Example: ['AAPL', 'GOOGL', 'TSLA']",
                 },
             },
-            required: [],
+            required: ["codes"],
             additionalProperties: false,
         }
     })
-    async listMyInvestments({ code }: { code: string }) {
+    async listMyInvestments({ codes }: { codes: string[] }) {
         const authentication = await this.context.get("authentication")
 
         const invest_wallets: Array<OrkiSchemaTypes.Portifolio.InvestWallet> = await this.database
@@ -143,7 +190,7 @@ export class LLMCapabilities {
                     $in: invest_wallets.map((wallet: any) => wallet._id)
                 },
                 code: {
-                    $regex: code ? new RegExp(`^${code}$`, "i") : /.*/
+                    $in: codes
                 }
             }).populate("invest_wallet")
 

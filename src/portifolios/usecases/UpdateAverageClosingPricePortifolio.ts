@@ -11,23 +11,20 @@ export class UpdateAverageClosingPricePortifolio implements UpdateAverageClosing
         private portifolio$Consolidate: Consolidate
     ) { }
         
-        async execute({ code, average_closing_price }: { code: string; average_closing_price: number; }): Promise<any> {
-            if (!code) {
-                throw new Error("Code is required")
-            }
-    
-            if (!average_closing_price) {
-                throw new Error("Average closing price is required")
-            }
-    
-            const authentication = await this.context.get("authentication")
-    
-            const invest_wallets = await this.database
-                .getCollection("invest_wallet")
-                .find({
-                    authentication
-                })
-    
+    async execute(list: Array<{ code: string; average_closing_price: number; }>): Promise<any> {
+        if (!list.length) {
+            throw new Error("List is required")
+        }
+
+        const authentication = await this.context.get("authentication")
+
+        const invest_wallets = await this.database
+            .getCollection("invest_wallet")
+            .find({
+                authentication
+            })
+
+        let toUpdates = await Promise.all(list.map(async ({ code, average_closing_price }) => {
             const invest_position = await this.database
                 .getCollection("invest_position")
                 .findOne({
@@ -38,26 +35,36 @@ export class UpdateAverageClosingPricePortifolio implements UpdateAverageClosing
                         $regex: new RegExp(`^${code}$`, "i")
                     }
                 })
-    
+
             if (!invest_position) {
-                throw new Error("Investment code not found")
+                return
             }
-    
-            await this.schema
-                .getApi('invest_position')
-                .update(
-                    invest_position._id.toString(),
-                    {
-                        average_closing_price
-                    }
-            )
-    
-            await this.portifolio$Consolidate
-                .execute()
-            
+
             return {
-                success: true,
-                message: "Average closing price updated successfully"
+                invest_position,
+                average_closing_price
             }
+        }))
+
+        toUpdates = toUpdates.filter(Boolean)
+
+        if (!toUpdates.length) {
+            throw new Error("Investment code not found")
         }
+
+        await this.schema
+            .getApi('invest_position')
+            .updateMany(toUpdates.map(({ invest_position, average_closing_price }: any) => ({
+                _id: invest_position._id,
+                average_closing_price
+            })))
+
+        await this.portifolio$Consolidate
+            .execute()
+        
+        return {
+            success: true,
+            message: "Average closing price updated successfully"
+        }
+    }
 }
