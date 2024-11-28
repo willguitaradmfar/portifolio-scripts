@@ -152,11 +152,47 @@ fields:
       listMode: true
       cloneMode: true
     order: 0
+  - name: net_value_variation_percent
+    label: Variação do Valor Líquido em percentual
+    optionsType:
+      Number:
+        formatType: percent
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
   - name: net_value_variation_day
     label: Variação do Valor Líquido no dia
     optionsType:
       Number:
         formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: net_value_variation_percent_day
+    label: Variação do Valor Líquido em percentual no dia
+    optionsType:
+      Number:
+        formatType: percent
         decimalPlaces: 2
     layout:
       xs: "12"
@@ -188,11 +224,47 @@ fields:
       listMode: true
       cloneMode: true
     order: 0
+  - name: net_value_variation_percent_week
+    label: Variação do Valor Líquido em percentual na semana
+    optionsType:
+      Number:
+        formatType: percent
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
   - name: net_value_variation_month
     label: Variação do Valor Líquido no mês
     optionsType:
       Number:
         formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
+  - name: net_value_variation_percent_month
+    label: Variação do Valor Líquido em percentual no mês
+    optionsType:
+      Number:
+        formatType: percent
         decimalPlaces: 2
     layout:
       xs: "12"

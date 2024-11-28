@@ -32,6 +32,9 @@ fields:
   - name: net_value
     description: Valor Líquido (gross_value - applied_value)
     typeField: Number
+  - name: net_value_percentage
+    description: Porcentagem do Valor Líquido (net_value / gross_value)
+    typeField: Number
     # Valor aplicado na posição
   - name: applied_value
     description: Valor Aplicado (average_closing_price * quantity)

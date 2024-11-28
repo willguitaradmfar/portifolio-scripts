@@ -49,6 +49,10 @@ fields:
     select:
       isList: true
       isGet: true
+  - name: net_value_percentage
+    select:
+      isList: true
+      isGet: true
   - name: applied_value
     select:
       isList: true

@@ -144,6 +144,24 @@ fields:
       listMode: true
       cloneMode: true
     order: 0
+  - name: net_value_percentage
+    label: Porcentagem do Valor Líquido
+    optionsType:
+      Number:
+        formatType: percentage
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
   - name: applied_value
     label: Valor Aplicado
     optionsType:

@@ -424,6 +424,33 @@ declare namespace OrkiSchemaTypes.Common {
       doc?: object | null;
       createdAt?: Date | null;
   }
+  /**
+   * Module: Common
+   */
+  type LlmmemoryInput = {
+      _id?: string;
+      /**
+      * Parameters bot
+      */
+      authentication?: string | null;
+      /**
+      * Bot
+      */
+      llmbot: string;
+      /**
+      * Nome do template
+      */
+      memory: string;
+      expirationAt?: Date | null;
+      /**
+      * Data de criação do registro
+      */
+      createdAt?: Date | null;
+      /**
+      * Data de atualização do registro
+      */
+      updatedAt?: Date | null;
+  }
 
   /**
    * Module: Common
@@ -824,6 +851,33 @@ declare namespace OrkiSchemaTypes.Common {
       doc?: object;
       createdAt?: Date;
   }
+  /**
+   * Module: Common
+   */
+  type Llmmemory = {
+      _id: string;
+      /**
+      * Parameters bot
+      */
+      authentication?: OrkiSchemaTypes.Common.Authentication;
+      /**
+      * Bot
+      */
+      llmbot: OrkiSchemaTypes.Common.Llmbot;
+      /**
+      * Nome do template
+      */
+      memory: string;
+      expirationAt?: Date;
+      /**
+      * Data de criação do registro
+      */
+      createdAt?: Date;
+      /**
+      * Data de atualização do registro
+      */
+      updatedAt?: Date;
+  }
 }
 
 /**
@@ -868,6 +922,10 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       net_value?: number | null;
       /**
+      * Porcentagem do Valor Líquido (net_value / gross_value)
+      */
+      net_value_percentage?: number | null;
+      /**
       * Valor Aplicado (average_closing_price * quantity)
       */
       applied_value?: number | null;
@@ -895,32 +953,6 @@ declare namespace OrkiSchemaTypes.Portifolio {
       * Se é Dólar
       */
       is_dolar?: boolean | null;
-      /**
-      * Data de criação do registro
-      */
-      created_at?: Date | null;
-      /**
-      * Data de atualização do registro
-      */
-      updated_at?: Date | null;
-  }
-  /**
-   * Module: Portifolio
-   */
-  type InvestWalletInput = {
-      _id?: string;
-      /**
-      * Autenticação
-      */
-      authentication?: string | null;
-      /**
-      * Código da carteira
-      */
-      code: string;
-      /**
-      * Nome
-      */
-      name: string;
       /**
       * Data de criação do registro
       */
@@ -968,17 +1000,59 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       net_value_variation?: number | null;
       /**
+      * Variação do Valor Líquido em percentual
+      */
+      net_value_variation_percent?: number | null;
+      /**
       * Variação do Valor Líquido no dia
       */
       net_value_variation_day?: number | null;
+      /**
+      * Variação do Valor Líquido em percentual no dia
+      */
+      net_value_variation_percent_day?: number | null;
       /**
       * Variação do Valor Líquido na semana
       */
       net_value_variation_week?: number | null;
       /**
+      * Variação do Valor Líquido em percentual na semana
+      */
+      net_value_variation_percent_week?: number | null;
+      /**
       * Variação do Valor Líquido no mês
       */
       net_value_variation_month?: number | null;
+      /**
+      * Variação do Valor Líquido em percentual no mês
+      */
+      net_value_variation_percent_month?: number | null;
+      /**
+      * Data de criação do registro
+      */
+      created_at?: Date | null;
+      /**
+      * Data de atualização do registro
+      */
+      updated_at?: Date | null;
+  }
+  /**
+   * Module: Portifolio
+   */
+  type InvestWalletInput = {
+      _id?: string;
+      /**
+      * Autenticação
+      */
+      authentication?: string | null;
+      /**
+      * Código da carteira
+      */
+      code: string;
+      /**
+      * Nome
+      */
+      name: string;
       /**
       * Data de criação do registro
       */
@@ -1027,6 +1101,10 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       net_value?: number;
       /**
+      * Porcentagem do Valor Líquido (net_value / gross_value)
+      */
+      net_value_percentage?: number;
+      /**
       * Valor Aplicado (average_closing_price * quantity)
       */
       applied_value?: number;
@@ -1054,32 +1132,6 @@ declare namespace OrkiSchemaTypes.Portifolio {
       * Se é Dólar
       */
       is_dolar?: boolean;
-      /**
-      * Data de criação do registro
-      */
-      created_at?: Date;
-      /**
-      * Data de atualização do registro
-      */
-      updated_at?: Date;
-  }
-  /**
-   * Module: Portifolio
-   */
-  type InvestWallet = {
-      _id: string;
-      /**
-      * Autenticação
-      */
-      authentication?: OrkiSchemaTypes.Common.Authentication;
-      /**
-      * Código da carteira
-      */
-      code: string;
-      /**
-      * Nome
-      */
-      name: string;
       /**
       * Data de criação do registro
       */
@@ -1127,17 +1179,59 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       net_value_variation?: number;
       /**
+      * Variação do Valor Líquido em percentual
+      */
+      net_value_variation_percent?: number;
+      /**
       * Variação do Valor Líquido no dia
       */
       net_value_variation_day?: number;
+      /**
+      * Variação do Valor Líquido em percentual no dia
+      */
+      net_value_variation_percent_day?: number;
       /**
       * Variação do Valor Líquido na semana
       */
       net_value_variation_week?: number;
       /**
+      * Variação do Valor Líquido em percentual na semana
+      */
+      net_value_variation_percent_week?: number;
+      /**
       * Variação do Valor Líquido no mês
       */
       net_value_variation_month?: number;
+      /**
+      * Variação do Valor Líquido em percentual no mês
+      */
+      net_value_variation_percent_month?: number;
+      /**
+      * Data de criação do registro
+      */
+      created_at?: Date;
+      /**
+      * Data de atualização do registro
+      */
+      updated_at?: Date;
+  }
+  /**
+   * Module: Portifolio
+   */
+  type InvestWallet = {
+      _id: string;
+      /**
+      * Autenticação
+      */
+      authentication?: OrkiSchemaTypes.Common.Authentication;
+      /**
+      * Código da carteira
+      */
+      code: string;
+      /**
+      * Nome
+      */
+      name: string;
       /**
       * Data de criação do registro
       */

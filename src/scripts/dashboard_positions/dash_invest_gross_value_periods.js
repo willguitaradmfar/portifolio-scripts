@@ -69,14 +69,14 @@ return async ({
                     }
                 }
             },
-            gross_value_variation_day: {
-                $first: '$gross_value_variation_day'
+            net_value_variation_percent_day: {
+                $first: '$net_value_variation_percent_day'
             },
-            gross_value_variation_week: {
-                $first: '$gross_value_variation_week'
+            net_value_variation_percent_week: {
+                $first: '$net_value_variation_percent_week'
             },
-            gross_value_variation_month: {
-                $first: '$gross_value_variation_month'
+            net_value_variation_percent_month: {
+                $first: '$net_value_variation_percent_month'
             },
             created_at: {
                 $first: '$created_at'
@@ -100,9 +100,9 @@ return async ({
             invest_wallet: '$_id.invest_wallet',
             created_at: 1,
             valores: [
-                { type: "1. Dia", valor: "$gross_value_variation_day" },
-                { type: "2. Semana", valor: "$gross_value_variation_week" },
-                { type: "3. Mês", valor: "$gross_value_variation_month" }
+                { type: "1. Dia", valor: "$net_value_variation_percent_day" },
+                { type: "2. Semana", valor: "$net_value_variation_percent_week" },
+                { type: "3. Mês", valor: "$net_value_variation_percent_month" }
             ]
         }
     })

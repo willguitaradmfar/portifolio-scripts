@@ -32,6 +32,10 @@ return async ({
             label: 'Precisa alocar',
             name: 'need_to_allocate',
             typeField: 'Number',
+        }, {
+            label: 'Porcentagem do Valor Líquido',
+            name: 'net_value_percentage',
+            typeField: 'Number',
         }]
         return { fields }
     }
@@ -68,6 +72,7 @@ return async ({
             created_at: '$updated_at',
             gross_value: 1,
             net_value: 1,
+            net_value_percentage: 1,
             need_to_allocate: 1,
         }
     })

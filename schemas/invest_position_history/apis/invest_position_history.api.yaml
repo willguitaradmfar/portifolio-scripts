@@ -46,7 +46,15 @@ fields:
     select:
       isList: true
       isGet: true  
+  - name: net_value_variation_percent
+    select:
+      isList: true
+      isGet: true
   - name: net_value_variation_day
+    select:
+      isList: true
+      isGet: true
+  - name: net_value_variation_percent_day
     select:
       isList: true
       isGet: true
@@ -54,7 +62,15 @@ fields:
     select:
       isList: true
       isGet: true
+  - name: net_value_variation_percent_week
+    select:
+      isList: true
+      isGet: true    
   - name: net_value_variation_month
+    select:
+      isList: true
+      isGet: true
+  - name: net_value_variation_percent_month
     select:
       isList: true
       isGet: true

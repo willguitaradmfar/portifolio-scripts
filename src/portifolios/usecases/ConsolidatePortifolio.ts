@@ -54,6 +54,7 @@ export class ConsolidatePortifolio implements Consolidate {
                 const gross_value = (closing_price * invest_position.quantity) * factor
                 const applied_value = (average_closing_price * invest_position.quantity) * factor
                 const net_value = gross_value - applied_value
+                const net_value_percentage = (net_value / applied_value) * 100
                 const average_profit = net_value > 0 ? (applied_value / net_value) * 100 : 0
                 const average_profit_variation = average_closing_price > 0 ? (closing_price / average_closing_price) * 100 : 0
 
@@ -62,6 +63,7 @@ export class ConsolidatePortifolio implements Consolidate {
                     gross_value,
                     applied_value,
                     net_value,
+                    net_value_percentage,
                     average_profit,
                     average_profit_variation,
                     recommendation_allocation: invest_position.recommendation_allocation

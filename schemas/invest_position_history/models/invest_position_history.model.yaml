@@ -37,17 +37,33 @@ fields:
   - name: net_value_variation
     description: Variação do Valor Líquido
     typeField: Number
+  
+  - name: net_value_variation_percent
+    description: Variação do Valor Líquido em percentual
+    typeField: Number
 
   - name: net_value_variation_day
     description: Variação do Valor Líquido no dia
+    typeField: Number
+
+  - name: net_value_variation_percent_day
+    description: Variação do Valor Líquido em percentual no dia
     typeField: Number
 
   - name: net_value_variation_week
     description: Variação do Valor Líquido na semana
     typeField: Number
 
+  - name: net_value_variation_percent_week
+    description: Variação do Valor Líquido em percentual na semana
+    typeField: Number
+
   - name: net_value_variation_month
     description: Variação do Valor Líquido no mês
+    typeField: Number
+  
+  - name: net_value_variation_percent_month
+    description: Variação do Valor Líquido em percentual no mês
     typeField: Number
   
   - name: created_at

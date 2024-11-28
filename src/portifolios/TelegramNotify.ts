@@ -57,6 +57,9 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
 
             investPositionHistoryInput.net_value_variation =
                 investPositionHistoryInput.net_value - lastSnapshot.net_value
+            
+            investPositionHistoryInput.net_value_variation_percent =
+                (investPositionHistoryInput.gross_value_variation * 100) / lastSnapshot.gross_value
         }
 
         if(firstSnapshotDay) {
@@ -65,6 +68,9 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
 
             investPositionHistoryInput.net_value_variation_day =
                 investPositionHistoryInput.net_value - firstSnapshotDay.net_value
+            
+            investPositionHistoryInput.net_value_variation_percent_day =
+                (investPositionHistoryInput.gross_value_variation_day * 100) / firstSnapshotDay.gross_value
         }
 
         if(firstSnapshotWeek) {
@@ -73,6 +79,9 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
 
             investPositionHistoryInput.net_value_variation_week =
                 investPositionHistoryInput.net_value - firstSnapshotWeek.net_value
+            
+            investPositionHistoryInput.net_value_variation_percent_week =
+                (investPositionHistoryInput.gross_value_variation_week * 100) / firstSnapshotWeek.gross_value
         }
 
         if(firstSnapshotMonth) {
@@ -81,6 +90,9 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
 
             investPositionHistoryInput.net_value_variation_month =
                 investPositionHistoryInput.net_value - firstSnapshotMonth.net_value
+            
+            investPositionHistoryInput.net_value_variation_percent_month =
+                (investPositionHistoryInput.gross_value_variation_month * 100) / firstSnapshotMonth.gross_value
         }
         
         return await this.database
