@@ -69,7 +69,7 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: true
+      listMode: false
       cloneMode: true
     order: 0
   - name: closing_price
@@ -216,6 +216,42 @@ fields:
       listMode: false
       cloneMode: true
     order: 0
+  - name: insiders_indicator_confidence
+    label: Indicador de Confiança dos Insiders
+    optionsType:
+      Number:
+        formatType: percentage
+        decimalPlaces: 0
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: false
+      cloneMode: true
+    order: 0
+  - name: insiders_indicator_price
+    label: Indicador de Preço dos Insiders
+    optionsType:
+      Number:
+        formatType: currency
+        decimalPlaces: 2
+    layout:
+      xs: "12"
+      sm: "12"
+      md: "12"
+      lg: "12"
+      xl: "12"
+    visible:
+      editMode: true
+      addMode: true
+      listMode: true
+      cloneMode: true
+    order: 0
   - name: recommendation_allocation
     label: Recomendação de Alocação
     optionsType:
@@ -231,7 +267,7 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: true
+      listMode: false
       cloneMode: true
     order: 0
   - name: allocated
@@ -249,7 +285,7 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: true
+      listMode: false
       cloneMode: true
     order: 0
   - name: need_to_allocate
@@ -284,7 +320,7 @@ fields:
     visible:
       editMode: true
       addMode: true
-      listMode: true
+      listMode: false
       cloneMode: true
     order: 0
   - name: updated_at

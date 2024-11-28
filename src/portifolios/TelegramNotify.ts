@@ -155,8 +155,9 @@ export class TelegramNotify implements OrkiInterfaces.TriggerRuntime {
 
                 const text = `
 ${newSummary?.gross_value_variation_day! < 0 ? '🔴' : '🟢'} ${summary.wallet_name}:
-Dia: ${newSummary.gross_value_variation_day?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-Sem: ${newSummary.gross_value_variation_week?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+Dia: ${newSummary.gross_value_variation_day?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}  (${newSummary.net_value_variation_percent_day?.toFixed(1)}%)
+Sem: ${newSummary.gross_value_variation_week?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} (${newSummary.net_value_variation_percent_week?.toFixed(1)}%)
+Mês: ${newSummary.gross_value_variation_month?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} (${newSummary.net_value_variation_percent_month?.toFixed(1)}%)
 SubTotal: ${newSummary.gross_value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}.
 `
                 message += text

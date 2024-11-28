@@ -65,6 +65,16 @@ fields:
     select:
       isList: true
       isGet: true
+
+  - name: insiders_indicator_confidence
+    select:
+      isList: true
+      isGet: true
+  - name: insiders_indicator_price
+    select:
+      isList: true
+      isGet: true
+
   - name: recommendation_allocation
     select:
       isList: true

@@ -48,6 +48,16 @@ fields:
     description: Variação do Lucro Médio (average_profit / closing_price)
     typeField: Number
 
+  # INSIDERS INDICATORS
+
+  - name: insiders_indicator_confidence
+    description: Indicador de Insiders
+    typeField: Number
+
+  - name: insiders_indicator_price
+    description: Indicador de Insiders (Preço)
+    typeField: Number
+
   # Porcentagem de recomendação de alocação
   - name: recommendation_allocation
     description: Porcentagem de Recomendação de Alocação
