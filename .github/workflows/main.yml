@@ -5,21 +5,25 @@ on:
     branches:
       - main
 jobs:
-  build-back:
+  build-package:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout recursive
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Get changed files
-        id: changed-files
-        uses: jitterbit/get-changed-files@v1
-        with:
-          format: space-delimited
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish changed files
-        env:
-          CORE_SCRIPT_TOKEN: ${{ secrets.MAIN_CORE_SCRIPT_TOKEN }}
-          CORE_SCRIPT_HOST: ${{ secrets.MAIN_CORE_SCRIPT_HOST }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build common
+        run: npm run publish -- -k
+
+      - name: Upload Package to GitHub Packages
         run: |
-          npm ci
-          echo "${{ steps.changed-files.outputs.all }}" | xargs -n 1 | xargs -n 1 echo npm run publish | sh
+          ZIP_NAME=$(ls *.zip)
+          PACKAGE_NAME=$(echo $ZIP_NAME | cut -d'@' -f1)
+          VERSION=$(echo $ZIP_NAME | cut -d'@' -f2)
+          REVISION=$(echo $ZIP_NAME | cut -d'@' -f3 | cut -d'.' -f1)
+          
+          gh release create $VERSION.$REVISION "$ZIP_NAME" -t "$PACKAGE_NAME v$VERSION.$REVISION" -n "Release $VERSION.$REVISION (Revision $REVISION)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
