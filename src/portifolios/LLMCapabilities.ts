@@ -6,6 +6,7 @@ export class LLMCapabilities {
     constructor(
         private database: OrkiInjectTypes.Database,
         private context: OrkiInjectTypes.Context,
+        private logger: OrkiInjectTypes.RuntimeLogger,
         private portifolio$UpdateQuantity: UpdateQuantity,
         private portifolio$UpdateAverageClosingPrice: UpdateAverageClosingPrice,
         private portifolio$InsertStock: InsertStock,
@@ -162,19 +163,12 @@ export class LLMCapabilities {
         parameters: {
             type: "object",
             properties: {
-                codes: {
-                    type: "array",
-                    items: {
-                        type: "string",
-                    },
-                    description: "List of investment codes. Example: ['AAPL', 'GOOGL', 'TSLA']",
-                },
             },
-            required: ["codes"],
+            required: [],
             additionalProperties: false,
         }
     })
-    async listMyInvestments({ codes }: { codes: string[] }) {
+    async listMyInvestments() {
         const authentication = await this.context.get("authentication")
 
         const invest_wallets: Array<OrkiSchemaTypes.Portifolio.InvestWallet> = await this.database
@@ -183,18 +177,25 @@ export class LLMCapabilities {
                 authentication
             })
 
-        const invest_positions: Array<any> = await this.database
-            .getCollection("invest_position")
+        const invest_positions = await this.database
+            .getCollection<OrkiSchemaTypes.Portifolio.InvestPosition>("invest_position")
             .find({
                 invest_wallet: {
                     $in: invest_wallets.map((wallet: any) => wallet._id)
-                },
-                code: {
-                    $in: codes
                 }
-            }).populate("invest_wallet")
+            }).populate("invest_wallet") as OrkiSchemaTypes.Portifolio.InvestPosition[]
+        
 
-        return invest_positions
+        return invest_positions.map((position) => {
+            return {
+                codigo: position.code,
+                carteira: position?.invest_wallet?.code,
+                precisa_compra_em_percentual: (position.need_to_allocate || 0) > 0 ? position.need_to_allocate : 0,
+                precisa_vender_em_percentual: (position.need_to_allocate || 0) < 0 ? position.need_to_allocate : 0,
+                lucro_prejuizo_em_percentual: position.net_value_percentage,
+                total_alocado_em_reais: position.gross_value,
+            }
+        })
     }
 
     @OrkiLLM({

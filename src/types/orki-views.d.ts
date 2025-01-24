@@ -27,7 +27,11 @@ declare namespace OrkiSchemaTypes {
 declare namespace OrkiSchemaTypes.Common {
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `authentication`
+   *
+   * Modelo de autenticação
+   */  
   type AuthenticationInput = {
       _id?: string;
       /**
@@ -73,7 +77,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `llmfact`
+   */  
   type LlmfactInput = {
       _id?: string;
       /**
@@ -105,6 +111,10 @@ declare namespace OrkiSchemaTypes.Common {
       */
       prompt: string;
       /**
+      * Detalhes do fato
+      */
+      detail?: object | null;
+      /**
       * Data de criação do registro
       */
       createdAt?: Date | null;
@@ -115,22 +125,58 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `audit`
+   *
+   * This model is used to store the audit logs of the application.
+The audit logs are generated when a record is created, updated or deleted.
+The audit logs are stored in the audit collection in the database
+
+   */  
   type AuditInput = {
       _id?: string;
+      /**
+      * The user who performed the action.
+      */
       author?: string | null;
+      /**
+      * The name of the model that was affected.
+      */
       model_name: string;
+      /**
+      * The name of the module where the action occurred.
+      */
       module_name: string;
+      /**
+      * The name of the API endpoint that was called.
+      */
       api_name: string;
+      /**
+      * The changes made to the document.
+      */
       difference: object;
+      /**
+      * The type of action performed (created, updated, removed).
+      */
       action: "created" | "updated" | "removed";
+      /**
+      * The ID of the document that was affected.
+      */
       docId: string;
+      /**
+      * The headers of the request that triggered the action.
+      */
       headers: object;
+      /**
+      * The date and time when the audit log was created.
+      */
       createdAt?: Date | null;
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `llmprompttemplate`
+   */  
   type LlmprompttemplateInput = {
       _id?: string;
       /**
@@ -164,7 +210,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `code`
+   */  
   type CodeInput = {
       _id?: string;
       /**
@@ -198,7 +246,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `llmbot`
+   */  
   type LlmbotInput = {
       _id?: string;
       /**
@@ -234,6 +284,10 @@ declare namespace OrkiSchemaTypes.Common {
       */
       scripts?: Array<string>;
       /**
+      * Runtimes bot
+      */
+      runtimes?: string | null;
+      /**
       * Experts bot
       */
       experts?: Array<string>;
@@ -248,7 +302,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `menu`
+   */  
   type MenuInput = {
       _id?: string;
       name: string;
@@ -259,7 +315,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `menurole`
+   */  
   type MenuroleInput = {
       _id?: string;
       name: string;
@@ -268,7 +326,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `llmconversation`
+   */  
   type LlmconversationInput = {
       _id?: string;
       /**
@@ -298,7 +358,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `llmconversationmessage`
+   */  
   type LlmconversationmessageInput = {
       _id?: string;
       /**
@@ -332,7 +394,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `metaaccount`
+   */  
   type MetaaccountInput = {
       _id?: string;
       name: string;
@@ -346,9 +410,15 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `metacontact`
+   */  
   type MetacontactInput = {
       _id?: string;
+      /**
+      * Authentication
+      */
+      authentication?: string | null;
       name: string;
       phoneNumber: string;
       /**
@@ -365,7 +435,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `metamessage`
+   */  
   type MetamessageInput = {
       _id?: string;
       identifier: string;
@@ -396,7 +468,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `runtimemodule`
+   */  
   type RuntimemoduleInput = {
       _id?: string;
       name: string;
@@ -416,9 +490,14 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `trash`
+   */  
   type TrashInput = {
       _id?: string;
+      /**
+      * Model name
+      */
       model?: string | null;
       schemaName?: string | null;
       doc?: object | null;
@@ -426,7 +505,9 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
-   */
+   *
+   * CollectionName: `llmmemory`
+   */  
   type LlmmemoryInput = {
       _id?: string;
       /**
@@ -451,9 +532,96 @@ declare namespace OrkiSchemaTypes.Common {
       */
       updatedAt?: Date | null;
   }
+  /**
+   * Module: Common
+   *
+   * CollectionName: `llminstructiontemplate`
+   */  
+  type LlminstructiontemplateInput = {
+      _id?: string;
+      /**
+      * Bot
+      */
+      llmbot: string;
+      /**
+      * Referência para recuperar
+      */
+      ref: string;
+      /**
+      * Instrução do agent
+      */
+      instruction: string;
+      /**
+      * Ordem de execução
+      */
+      order: number;
+      /**
+      * Ativo
+      */
+      isActive?: boolean | null;
+      /**
+      * Data de criação do registro
+      */
+      createdAt?: Date | null;
+      /**
+      * Data de atualização do registro
+      */
+      updatedAt?: Date | null;
+  }
+  /**
+   * Module: Common
+   *
+   * CollectionName: `crudmodel`
+   */  
+  type CrudmodelInput = {
+      _id?: string;
+      /**
+      * Model name
+      */
+      name: string;
+      /**
+      * Module responsible for the model
+      */
+      runtimeModuleName?: string | null;
+      /**
+      * Description of the model
+      */
+      description?: string | null;
+      /**
+      * Indicates whether the model is a view
+      */
+      isView?: boolean | null;
+      /**
+      * Pipeline to be executed when the model is a view (JSON)
+      */
+      viewPipeline?: string | null;
+      /**
+      * Model to be used as a view
+      */
+      viewOn?: string | null;
+      /**
+      * Fields of the model
+      */
+      fields?: object | null;
+      /**
+      * Indexes of the model
+      */
+      indexes?: object | null;
+      createdAt?: Date | null;
+      /**
+      * Data de atualização do registro
+      */
+      updatedAt?: Date | null;
+  }
 
   /**
    * Module: Common
+   *
+   * CollectionName: `authentication`
+   *
+   * Collection: authentication
+   *
+   * Modelo de autenticação
    */
   type Authentication = {
       _id: string;
@@ -500,6 +668,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `llmfact`
    */
   type Llmfact = {
       _id: string;
@@ -532,6 +702,10 @@ declare namespace OrkiSchemaTypes.Common {
       */
       prompt: OrkiSchemaTypes.Common.Llmprompttemplate;
       /**
+      * Detalhes do fato
+      */
+      detail?: object;
+      /**
       * Data de criação do registro
       */
       createdAt?: Date;
@@ -542,21 +716,59 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `audit`
+   *
+   * Collection: audit
+   *
+   * This model is used to store the audit logs of the application.
+The audit logs are generated when a record is created, updated or deleted.
+The audit logs are stored in the audit collection in the database
+
    */
   type Audit = {
       _id: string;
+      /**
+      * The user who performed the action.
+      */
       author?: OrkiSchemaTypes.Common.Authentication;
+      /**
+      * The name of the model that was affected.
+      */
       model_name: string;
+      /**
+      * The name of the module where the action occurred.
+      */
       module_name: string;
+      /**
+      * The name of the API endpoint that was called.
+      */
       api_name: string;
+      /**
+      * The changes made to the document.
+      */
       difference: object;
+      /**
+      * The type of action performed (created, updated, removed).
+      */
       action: "created" | "updated" | "removed";
+      /**
+      * The ID of the document that was affected.
+      */
       docId: string;
+      /**
+      * The headers of the request that triggered the action.
+      */
       headers: object;
+      /**
+      * The date and time when the audit log was created.
+      */
       createdAt?: Date;
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `llmprompttemplate`
    */
   type Llmprompttemplate = {
       _id: string;
@@ -591,6 +803,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `code`
    */
   type Code = {
       _id: string;
@@ -625,6 +839,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `llmbot`
    */
   type Llmbot = {
       _id: string;
@@ -661,6 +877,10 @@ declare namespace OrkiSchemaTypes.Common {
       */
       scripts?: Array<OrkiSchemaTypes.Common.Code>;
       /**
+      * Runtimes bot
+      */
+      runtimes?: string;
+      /**
       * Experts bot
       */
       experts?: Array<OrkiSchemaTypes.Common.Llmbot>;
@@ -675,6 +895,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `menu`
    */
   type Menu = {
       _id: string;
@@ -686,6 +908,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `menurole`
    */
   type Menurole = {
       _id: string;
@@ -695,6 +919,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `llmconversation`
    */
   type Llmconversation = {
       _id: string;
@@ -725,6 +951,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `llmconversationmessage`
    */
   type Llmconversationmessage = {
       _id: string;
@@ -759,6 +987,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `metaaccount`
    */
   type Metaaccount = {
       _id: string;
@@ -773,9 +1003,15 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `metacontact`
    */
   type Metacontact = {
       _id: string;
+      /**
+      * Authentication
+      */
+      authentication?: OrkiSchemaTypes.Common.Authentication;
       name: string;
       phoneNumber: string;
       /**
@@ -792,6 +1028,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `metamessage`
    */
   type Metamessage = {
       _id: string;
@@ -823,6 +1061,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `runtimemodule`
    */
   type Runtimemodule = {
       _id: string;
@@ -843,9 +1083,14 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `trash`
    */
   type Trash = {
       _id: string;
+      /**
+      * Model name
+      */
       model?: string;
       schemaName?: string;
       doc?: object;
@@ -853,6 +1098,8 @@ declare namespace OrkiSchemaTypes.Common {
   }
   /**
    * Module: Common
+   *
+   * CollectionName: `llmmemory`
    */
   type Llmmemory = {
       _id: string;
@@ -878,6 +1125,87 @@ declare namespace OrkiSchemaTypes.Common {
       */
       updatedAt?: Date;
   }
+  /**
+   * Module: Common
+   *
+   * CollectionName: `llminstructiontemplate`
+   */
+  type Llminstructiontemplate = {
+      _id: string;
+      /**
+      * Bot
+      */
+      llmbot: OrkiSchemaTypes.Common.Llmbot;
+      /**
+      * Referência para recuperar
+      */
+      ref: string;
+      /**
+      * Instrução do agent
+      */
+      instruction: string;
+      /**
+      * Ordem de execução
+      */
+      order: number;
+      /**
+      * Ativo
+      */
+      isActive?: boolean;
+      /**
+      * Data de criação do registro
+      */
+      createdAt?: Date;
+      /**
+      * Data de atualização do registro
+      */
+      updatedAt?: Date;
+  }
+  /**
+   * Module: Common
+   *
+   * CollectionName: `crudmodel`
+   */
+  type Crudmodel = {
+      _id: string;
+      /**
+      * Model name
+      */
+      name: string;
+      /**
+      * Module responsible for the model
+      */
+      runtimeModuleName?: string;
+      /**
+      * Description of the model
+      */
+      description?: string;
+      /**
+      * Indicates whether the model is a view
+      */
+      isView?: boolean;
+      /**
+      * Pipeline to be executed when the model is a view (JSON)
+      */
+      viewPipeline?: string;
+      /**
+      * Model to be used as a view
+      */
+      viewOn?: string;
+      /**
+      * Fields of the model
+      */
+      fields?: object;
+      /**
+      * Indexes of the model
+      */
+      indexes?: object;
+      createdAt?: Date;
+      /**
+      * Data de atualização do registro
+      */
+      updatedAt?: Date;
+  }
 }
 
 /**
@@ -886,7 +1214,9 @@ declare namespace OrkiSchemaTypes.Common {
 declare namespace OrkiSchemaTypes.Portifolio {
   /**
    * Module: Portifolio
-   */
+   *
+   * CollectionName: `invest_position`
+   */  
   type InvestPositionInput = {
       _id?: string;
       /**
@@ -938,6 +1268,14 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       average_profit_variation?: number | null;
       /**
+      * Indicador de Insiders
+      */
+      insiders_indicator_confidence?: number | null;
+      /**
+      * Indicador de Insiders (Preço)
+      */
+      insiders_indicator_price?: number | null;
+      /**
       * Porcentagem de Recomendação de Alocação
       */
       recommendation_allocation?: number | null;
@@ -964,7 +1302,9 @@ declare namespace OrkiSchemaTypes.Portifolio {
   }
   /**
    * Module: Portifolio
-   */
+   *
+   * CollectionName: `invest_position_history`
+   */  
   type InvestPositionHistoryInput = {
       _id?: string;
       /**
@@ -1038,7 +1378,9 @@ declare namespace OrkiSchemaTypes.Portifolio {
   }
   /**
    * Module: Portifolio
-   */
+   *
+   * CollectionName: `invest_wallet`
+   */  
   type InvestWalletInput = {
       _id?: string;
       /**
@@ -1065,6 +1407,8 @@ declare namespace OrkiSchemaTypes.Portifolio {
 
   /**
    * Module: Portifolio
+   *
+   * CollectionName: `invest_position`
    */
   type InvestPosition = {
       _id: string;
@@ -1117,6 +1461,14 @@ declare namespace OrkiSchemaTypes.Portifolio {
       */
       average_profit_variation?: number;
       /**
+      * Indicador de Insiders
+      */
+      insiders_indicator_confidence?: number;
+      /**
+      * Indicador de Insiders (Preço)
+      */
+      insiders_indicator_price?: number;
+      /**
       * Porcentagem de Recomendação de Alocação
       */
       recommendation_allocation?: number;
@@ -1143,6 +1495,8 @@ declare namespace OrkiSchemaTypes.Portifolio {
   }
   /**
    * Module: Portifolio
+   *
+   * CollectionName: `invest_position_history`
    */
   type InvestPositionHistory = {
       _id: string;
@@ -1217,6 +1571,8 @@ declare namespace OrkiSchemaTypes.Portifolio {
   }
   /**
    * Module: Portifolio
+   *
+   * CollectionName: `invest_wallet`
    */
   type InvestWallet = {
       _id: string;

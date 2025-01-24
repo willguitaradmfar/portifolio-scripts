@@ -7,3 +7,4 @@ letsencrypt
 *.input.json
 
 *.zip
+.env

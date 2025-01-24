@@ -9,9 +9,10 @@
     "ts:generate": "npx orki-core-view generate -d ./src/definitions",
     "ts:validate": "npx tsc  --noEmit",
     "ts:docs": "npx typedoc --plugin typedoc-plugin-markdown --out docs src/definitions/*.ts",
-    "build": "rm -Rf dist && tsc -b && cp -R schemas dist",
+    "build": "rm -Rf dist && tsc -b && cp -R schemas dist && cp -R triggers dist",
     "execute": "tsc -b && npx orki-core-runtime --cmd run -d dist",
-    "generate": "npx orki-core-runtime --cmd generate -t src/types"
+    "generate": "npx orki-core-runtime --cmd generate -t src/types",
+    "hot": "tsc -b && cp -R schemas dist && npx orki-core-runtime --cmd hot-deploy -d dist"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,7 @@
     "eventsource": "^2.0.2",
     "mongoose": "^8.8.1",
     "node-fetch": "^3.3.1",
-    "orki-core-runtime": "^1.0.80",
+    "orki-core-runtime": "^1.0.101",
     "orki-core-script": "^0.0.58",
     "orki-core-view": "^0.0.55",
     "typedoc": "^0.25.7",
